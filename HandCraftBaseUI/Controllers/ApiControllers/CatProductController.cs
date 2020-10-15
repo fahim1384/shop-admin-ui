@@ -36,18 +36,18 @@ namespace HandCraftBaseUI.Controllers.ApiControllers
             {
 
                 var result = JsonSerializer.Deserialize<List<CatProductDto>>(response.Content);
-
+                var fatherlist = result.Where(c => c.pid == null).ToList();
 
 
 
                 var str = "[";
 
-                foreach (var item in result)
+                foreach (var item in fatherlist)
                 {
                     str += "{";
                     str += "'mid':" + item.id + ",";
                     str += "'text':" + "'" + item.name + "'";
-                    str += GetSecondNode(item.inverseP);
+                    str += GetSecondNode(result, item.id);
                     str += "},";
                 }
 
@@ -155,7 +155,7 @@ namespace HandCraftBaseUI.Controllers.ApiControllers
             try
             {
                 var token = Request.Cookies["token"];
-                var client = new RestClient(_configuration["HandCraftBaseServer"] + "CatProduct/DeleteCatProduct?catProductId="+catProductId);
+                var client = new RestClient(_configuration["HandCraftBaseServer"] + "CatProduct/DeleteCatProduct?catProductId=" + catProductId);
                 var request = new RestRequest(Method.DELETE);
                 request.AddHeader("authorization", "Bearer " + token);
                 IRestResponse response = client.Execute(request);
@@ -174,9 +174,9 @@ namespace HandCraftBaseUI.Controllers.ApiControllers
 
         }
 
-        public virtual string GetSecondNode(List<CatProductDto> list)
+        public virtual string GetSecondNode(List<CatProductDto> mainlist,long? pid)
         {
-
+            var list = mainlist.Where(c => c.pid == pid).ToList();
             var str = "";
             if (list.Count > 0)
             {
@@ -187,7 +187,7 @@ namespace HandCraftBaseUI.Controllers.ApiControllers
                     str += "{";
                     str += "'mid':" + item.id + ",";
                     str += "'text':'" + item.name + "',";
-                    str += GetSecondNode(item.inverseP);
+                    str += GetSecondNode(mainlist, item.id);
                     str += "},";
                 }
 

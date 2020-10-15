@@ -180,7 +180,7 @@ function DeleteCatProduct() {
         success: function (response) {
             Swal.fire(
                 'ثبت شد !',
-                'دسته با موفقیت بروز حذف شد',
+                'دسته با موفقیت حذف شد',
                 'success'
             );
             GetCatProductList();

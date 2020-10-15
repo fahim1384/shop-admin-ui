@@ -13,6 +13,6 @@ namespace HandCraftBaseUI.Models
         public long? rkey { get; set; }
         public string icon { get; set; }
         public string url { get; set; }
-        public List<CatProductDto> inverseP { get; set; }
+
     }
 }
