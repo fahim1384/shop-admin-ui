@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "j4trmp7Va8fHYjOi8mZyl1BMzwyiCKLHyV/tgZex8oxbhQasO6T+T5d8ANhfundY0zCYPW0oht1z+GcgH+G8tw==",
+  "dgSpecHash": "L0qd21obQ0+hXFMmTg+9n1dnVLV2/I5coc/ISyEjnB1vTPBB7yLBNasJWz+koQmy8UjakuPZOE9jSJ3xnEMW/g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Sahand\\source\\repos\\Sahandfarshbaf\\HandCraftBaseUI\\HandCraftBaseUI\\HandCraftBaseUI.csproj",
+  "projectFilePath": "C:\\Users\\Sahand\\source\\repos\\fahim1384\\shop-admin-ui\\HandCraftBaseUI\\HandCraftBaseUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Sahand\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\Sahand\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
