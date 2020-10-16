@@ -774,7 +774,6 @@ C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\bin\Debug\n
 C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\netcoreapp3.1\HandCraftBaseUI.csprojAssemblyReference.cache
 C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\netcoreapp3.1\HandCraftBaseUI.AssemblyInfoInputs.cache
 C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\netcoreapp3.1\HandCraftBaseUI.AssemblyInfo.cs
 C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\netcoreapp3.1\HandCraftBaseUI.csproj.CoreCompileInputs.cache
@@ -786,6 +785,7 @@ C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\n
 C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\netcoreapp3.1\HandCraftBaseUI.TagHelpers.output.cache
 C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\netcoreapp3.1\HandCraftBaseUI.RazorCoreGenerate.cache
 C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
+C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\CatProduct.cshtml.g.cs
 C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\Color.cshtml.g.cs
 C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
@@ -802,4 +802,3 @@ C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\n
 C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\netcoreapp3.1\HandCraftBaseUI.dll
 C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\netcoreapp3.1\HandCraftBaseUI.pdb
 C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\netcoreapp3.1\HandCraftBaseUI.genruntimeconfig.cache
-C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\CatProduct.cshtml.g.cs

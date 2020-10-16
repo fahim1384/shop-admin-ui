@@ -19,8 +19,7 @@ namespace HandCraftBaseUI.Controllers
 
         public IActionResult Color()
         {
-            var cookie = Request.Cookies["token"];
-
+          
             return View();
         }
 

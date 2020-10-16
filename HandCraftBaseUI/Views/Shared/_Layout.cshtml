@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html>
 @{
-//var firstname = User.Claims.Where(c => c.Type == "firstname").Select(x => x.Value).SingleOrDefault();
-//var lastname = User.Claims.Where(c => c.Type == "lastname").Select(x => x.Value).SingleOrDefault();
-//var name = firstname + " " + lastname;
+    //var firstname = User.Claims.Where(c => c.Type == "firstname").Select(x => x.Value).SingleOrDefault();
+    //var lastname = User.Claims.Where(c => c.Type == "lastname").Select(x => x.Value).SingleOrDefault();
+    //var name = firstname + " " + lastname;
 }
 <html>
 <head>
@@ -149,9 +149,15 @@
                             <!-- Add icons to the links using the .nav-icon class
                             with font-awesome or any other icon font library -->
                             <li class="nav-item">
-                                <a  asp-controller="Home" asp-action="CatProduct" class="nav-link">
+                                <a asp-controller="Home" asp-action="CatProduct" class="nav-link">
                                     <i class="nav-icon fa fa-newspaper-o"></i>
                                     <p>دسته بندی محصولات</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="Home" asp-action="Color" class="nav-link">
+                                    <i class="nav-icon fa fa-newspaper-o"></i>
+                                    <p>رنگ محصولات</p>
                                 </a>
                             </li>
 
@@ -159,15 +165,15 @@
 
                                 <a onclick="$('#logout').click();" class="nav-link" style="cursor:pointer">
                                     <i class="nav-icon fa fa-sign-out"></i>
-                                    <p>خروچ از پنل</p>
+                                    <p>خروج از پنل</p>
                                 </a>
 
                             </li>
 
                         </ul>
                         @*<form asp-area="" asp-controller="Account" asp-action="Logout" style="display: none;">
-                            <button id="logout" type="submit" style="display: none;"></button>
-                        </form>*@
+                                <button id="logout" type="submit" style="display: none;"></button>
+                            </form>*@
                     </nav>
                     <!-- /.sidebar-menu -->
                 </div>
@@ -225,7 +231,38 @@
             </div>
         </div>
     </div>
+    <script>
+
+        function MakeDataTable(divId) {
+
+            $(`#${divId}`).DataTable({
+                "language": {
+                    "decimal": "",
+                    "emptyTable": "رکوردی برای نمایش وجود ندارد.",
+                    "info": "نمایش _START_ تا _END_ از _TOTAL_ رکورد",
+                    "infoEmpty": "نمایش 0 تا 0 از 0 رکورد",
+                    "infoFiltered": "(فیلتر شده از _MAX_ رکورد)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "نمایش _MENU_ رکورد",
+                    "loadingRecords": "Loading...",
+                    "processing": "Processing...",
+                    "search": "جستجو:",
+                    "zeroRecords": "رکوردی یافت نشد",
+                    "paginate": {
+                        "next": "بعدی",
+                        "previous": "قبلی"
+                    }
+                },
+                "info": false,
+                "lengthChange": false
+            });
+
+        }
+
+    </script>
     @RenderSection("Scripts", required: false)
+
 </body>
 
 </html>
