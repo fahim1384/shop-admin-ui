@@ -29,6 +29,24 @@ namespace HandCraftBaseUI.Controllers
             return View();
         }
 
+        public IActionResult Packingtype()
+        {
+
+            return View();
+        }
+
+        public IActionResult Slider()
+        {
+
+            return View();
+        }
+
+        public IActionResult Product()
+        {
+
+            return View();
+        }
+
 
     }
 }
