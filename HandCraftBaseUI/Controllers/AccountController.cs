@@ -32,47 +32,5 @@ namespace HandCraftBaseUI.Controllers
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(string username, string password, string returnUrl = null)
-        {
-
-            var login = new {username = username, Password = password};
-            var body = JsonSerializer.Serialize(login);
-
-            var client = new RestClient(_configuration["HandCraftBaseServer"] + "Account/Login");
-            var request = new RestRequest(Method.POST);
-            request.AddJsonBody(body);
-
-            IRestResponse response = client.Execute(request);
-            if (response.IsSuccessful)
-            {
-                var result = JsonSerializer.Deserialize<User>(response.Content);
-                Response.Cookies.Append(
-                    "token",
-                    result.token,
-                    new CookieOptions()
-                    {
-                        Expires = DateTime.Now.AddMinutes(30),
-                        // Marking the cookie as essential
-                        IsEssential = true
-                    });
-                Response.Cookies.Append(
-                    "fullname",
-                    result.fullname,
-                    new CookieOptions()
-                    {
-                        Expires = DateTime.Now.AddMinutes(30),
-                        // Marking the cookie as essential
-                        IsEssential = true
-                    });
-                return RedirectToAction("Index", "Home");
-            }
-
-            return BadRequest("Invalid Username And Password");
-
-
-
-        }
     }
 }

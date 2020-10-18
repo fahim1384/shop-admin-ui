@@ -20,7 +20,7 @@ const GetColorList = () => {
 
     jQuery.ajax({
         type: "Get",
-        url: "/api/Color/GetColorList",
+        url: SetUrl("Color/GetColorList"),
         data: "",
         async: false,
         contentType: "application/json; charset=utf-8",
@@ -78,10 +78,11 @@ const InsertColor = () => {
 
     jQuery.ajax({
         type: "Post",
-        url: "/api/Color/InserColor",
+        url: SetUrl("Color/InsertColor"),
         data: JSON.stringify(colorDto),
         async: false,
         contentType: "application/json; charset=utf-8",
+        headers: { "Authorization": `Bearer ${GetToken()}` },
         dataType: "text",
         success: (response) => {
             EndLoader();
@@ -102,8 +103,10 @@ const InsertColor = () => {
         },
         error: (response) => {
 
-            console.log(response);
-            EndLoader();
+            if (response.status === 401) {
+
+                window.location = "/Account/Login";
+            }
 
         },
         complete: () => {
@@ -130,9 +133,10 @@ const UpdateColor = () => {
 
     jQuery.ajax({
         type: "Put",
-        url: "/api/Color/UpdateColor",
+        url: SetUrl("Color/UpdateColor"),
         data: JSON.stringify(colorDto),
         async: false,
+        headers: { "Authorization": `Bearer ${GetToken()}` },
         contentType: "application/json; charset=utf-8",
         dataType: "text",
         success: (response) => {
@@ -154,7 +158,11 @@ const UpdateColor = () => {
         },
         error: (response) => {
 
-            console.log(response);
+
+            if (response.status === 401) {
+
+                window.location = "/Account/Login";
+            }
             EndLoader();
 
         },
@@ -170,9 +178,10 @@ const GetColorById = () => {
 
     jQuery.ajax({
         type: "Get",
-        url: `/api/Color/GetColorById?colorId=${Id}`,
+        url: SetUrl(`Color/GetColorById?colorId=${Id}`),
         data: "",
         async: false,
+        headers: { "Authorization": `Bearer ${GetToken()}` },
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: (response) => {
@@ -203,9 +212,10 @@ const DeleteColor = () => {
 
     jQuery.ajax({
         type: "Delete",
-        url: `/api/Color/DeleteColor?colorId=${Id}`,
+        url: SetUrl(`Color/DeleteColor?colorId=${Id}`),
         data: "",
         async: false,
+        headers: { "Authorization": `Bearer ${GetToken()}` },
         contentType: "application/json; charset=utf-8",
         dataType: "text",
         success: (response) => {
@@ -218,6 +228,10 @@ const DeleteColor = () => {
         },
         error: (response) => {
 
+            if (response.status === 401) {
+
+                window.location = "/Account/Login";
+            }
             console.log(response);
 
         },

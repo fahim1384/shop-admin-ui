@@ -78,7 +78,31 @@
             $('#MoadalLoader').modal('hide');
         }
 
+        const SetToken = (token) => {
 
+            var list = [];
+            var token = { t: token };
+            list.push(token);
+            localStorage.setItem("Tokens", JSON.stringify(list));
+
+        }
+
+        const GetToken = () => {
+
+            var stored = JSON.parse(localStorage.getItem("Tokens"));
+            if (stored == "[]") {
+                return "No Token";
+            } else {
+
+                return stored[0].t;
+            }
+        }
+
+        const SetUrl = (url) => {
+
+            var host = "https://localhost:44366/api/" + url;
+            return host;
+        }
 
     </script>
 
@@ -170,6 +194,12 @@
                                 <a asp-controller="Home" asp-action="Product" class="nav-link">
                                     <i class="nav-icon fa fa-newspaper-o"></i>
                                     <p> محصولات</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="Home" asp-action="FamousComments" class="nav-link">
+                                    <i class="nav-icon fa fa-newspaper-o"></i>
+                                    <p> نظرات فاخر</p>
                                 </a>
                             </li>
 

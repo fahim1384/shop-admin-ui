@@ -47,6 +47,12 @@ namespace HandCraftBaseUI.Controllers
             return View();
         }
 
+        public IActionResult FamousComments()
+        {
+
+            return View();
+        }
+
 
     }
 }

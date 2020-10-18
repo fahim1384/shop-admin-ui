@@ -1,0 +1,100 @@
+﻿<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">@ViewData["Title"]</h1>
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-6"></div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<div class="card card-primary" id="PnlList">
+    <div class="card-header">
+        <h3 class="card-title">لیست نظرات</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="row">
+            <div class="col text-center">
+                <input type="button" value="افزودن نظر جدید" class="btn btn-primary" id="btnJadid" />
+            </div>
+        </div>
+        <hr />
+        <div class="row table table-responsive">
+            <div class="w-100 TblList">
+
+            </div>
+        </div>
+    </div>
+    <!-- /.card-body -->
+</div>
+
+
+<div class="modal fade" id="InsertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">ثبت/ویرایش آلبوم</h5>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <label for="txtName" class="col-sm-2 control-label">نام:</label>
+                    <input type="text" class="form-control" id="txtName" placeholder="نام" />
+                </div>
+                <div class="form-group">
+                    <label for="txtPost" class="col-sm-2 control-label">پست:</label>
+                    <input type="text" class="form-control" id="txtPost" placeholder="پست" />
+                </div>
+                <div class="form-group">
+                    <label for="txtComment" class="col-sm-2 control-label">نظر:</label>
+                    <input type="text" class="form-control" id="txtComment" placeholder="نظر" />
+                </div>
+                <div class="form-group">
+                    <label for="txtDesc" class="col-sm-2 control-label">توضیحات:</label>
+                    <textarea class="form-control" cols="4" rows="4" id="txtDesc" placeholder="توضیحات"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="ProfileImageUplodaer">انتخاب تصویر پروفایل</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="ProfileImageUplodaer">
+                            <label class="custom-file-label btn btn-info ProfileImageUplodaer" for="ProfileImageUplodaer">انتخاب تصویر</label>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="CommenImageUploader">انتخاب تصویر نظر</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="CommenImageUploader">
+                            <label class="custom-file-label btn btn-info CommenImageUploader" for="CommenImageUploader">انتخاب تصویر</label>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer btn-group">
+                <button type="button" id="btnSabt" class="btn btn-success w-25"><i class="fa fa-check"></i>&nbsp; ثبت</button>
+                <button type="button" class="btn btn-warning w-25" data-dismiss="modal"><i class="fa fa-remove"></i>&nbsp; انصراف</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+
+    <script src="~/FormScripts/FamousComments.js"></script>
+    
+}

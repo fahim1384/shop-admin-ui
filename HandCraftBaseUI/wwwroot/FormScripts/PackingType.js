@@ -23,7 +23,7 @@ const GetPackingTypeList = () => {
 
     jQuery.ajax({
         type: "Get",
-        url: "/api/PackingType/GetPackingTypeList",
+        url: SetUrl("PackingType/GetPackingTypeList"),
         data: "",
         async: false,
         contentType: "application/json; charset=utf-8",
@@ -87,10 +87,11 @@ const InsertPackingType = () => {
 
     jQuery.ajax({
         type: "Post",
-        url: "/api/PackingType/InsertPackingType",
+        url: SetUrl("PackingType/InsertPackingType"),
         data: JSON.stringify(packingTypeDto),
         async: false,
         contentType: "application/json; charset=utf-8",
+        headers: { "Authorization": `Bearer ${GetToken()}` },
         dataType: "text",
         success: (response) => {
             EndLoader();
@@ -111,12 +112,15 @@ const InsertPackingType = () => {
         },
         error: (response) => {
 
+            if (response.status === 401) {
+
+                window.location = "/Account/Login";
+            }
             console.log(response);
-            EndLoader();
 
         },
         complete: () => {
-
+            EndLoader();
         }
     });
 }
@@ -139,10 +143,11 @@ const UpdatePackingType = () => {
 
     jQuery.ajax({
         type: "Put",
-        url: "/api/PackingType/UpdatePackingType",
+        url: SetUrl("PackingType/UpdatePackingType"),
         data: JSON.stringify(packingTypeDto),
         async: false,
         contentType: "application/json; charset=utf-8",
+        headers: { "Authorization": `Bearer ${GetToken()}` },
         dataType: "text",
         success: (response) => {
             EndLoader();
@@ -163,12 +168,16 @@ const UpdatePackingType = () => {
         },
         error: (response) => {
 
+            if (response.status === 401) {
+
+                window.location = "/Account/Login";
+            }
             console.log(response);
-            EndLoader();
 
         },
         complete: () => {
 
+            EndLoader();
         }
     });
 }
@@ -179,7 +188,7 @@ const GetPackingTypeById = () => {
 
     jQuery.ajax({
         type: "Get",
-        url: `/api/PackingType/GetPackingTypeById?packingTypeId=${Id}`,
+        url: SetUrl(`PackingType/GetPackingTypeById?packingTypeId=${Id}`),
         data: "",
         async: false,
         contentType: "application/json; charset=utf-8",
@@ -213,10 +222,11 @@ const DeletePackingType = () => {
 
     jQuery.ajax({
         type: "Delete",
-        url: `/api/PackingType/DeletePackingType?packingTypeId=${Id}`,
+        url: SetUrl(`PackingType/DeletePackingType?packingTypeId=${Id}`),
         data: "",
         async: false,
         contentType: "application/json; charset=utf-8",
+        headers: { "Authorization": `Bearer ${GetToken()}` },
         dataType: "text",
         success: (response) => {
             Swal.fire(
@@ -228,6 +238,10 @@ const DeletePackingType = () => {
         },
         error: (response) => {
 
+            if (response.status === 401) {
+
+                window.location = "/Account/Login";
+            }
             console.log(response);
 
         },
@@ -244,7 +258,7 @@ const ViewDetails = () => {
     let Html = '';
     jQuery.ajax({
         type: "Get",
-        url: `/api/PackingType/GetPackingTypeById?packingTypeId=${Id}`,
+        url: SetUrl(`PackingType/GetPackingTypeById?packingTypeId=${Id}`),
         data: "",
         async: false,
         contentType: "application/json; charset=utf-8",
@@ -255,7 +269,7 @@ const ViewDetails = () => {
             if (response.packingTypeImage.length > 0) {
                 $('#RemoveImage').attr('ImageId', response.packingTypeImage[0].id);
                 $('.MainImage').attr('src', response.packingTypeImage[0].imageFileUrl);
-                $('#imgTitle').text(response.packingTypeImage[0].title + "( " + response.packingTypeImage[0].decription+" )");
+                $('#imgTitle').text(response.packingTypeImage[0].title + "( " + response.packingTypeImage[0].decription + " )");
                 $('.ImageList').show();
             }
             else {
@@ -285,6 +299,115 @@ const ViewDetails = () => {
     });
 }
 
+const UploadImage = () => {
+
+
+    var myfile = $("#exampleInputFile");
+
+    var formData = new FormData();
+
+
+
+    let packingTypeImage = {
+
+        Id: 0,
+        PackingTypeId: Id,
+        Title: $("#txtOnvanTasvir").val(),
+        Decription: $("#txtTozihat").val(),
+        ImageFileUrl: ''
+    }
+    formData.append('ImageFile', myfile[0].files[0]);
+    formData.append('packingTypeImage', JSON.stringify(packingTypeImage));
+
+    ShowLoader();
+
+    jQuery.ajax({
+        type: "Post",
+        url: SetUrl(`PackingType/UploadPackingTypeImage`),
+        data: formData,
+        contentType: false,
+        processData: false,
+        headers: { "Authorization": `Bearer ${GetToken()}` },
+        success: function (response) {
+
+            EndLoader();
+
+            $('#ImageModal').modal('hide');
+            Swal.fire(
+                'ثبت شد !',
+                'تصویر با موفقیت ثبت شد',
+                'success'
+            );
+
+
+
+            $('#txtOnvanTasvir').val('');
+            $('#txtTozihat').val('');
+            $('#ImageModal').modal('hide');
+
+
+        },
+        error: function (response) {
+
+
+            EndLoader();
+            if (response.status === 401) {
+
+                window.location = "/Account/Login";
+            }
+            let textalert = response.responseText;
+            Swal.fire({
+                icon: 'error',
+                title: 'خطا در بازگذاری !',
+                text: textalert
+
+            });
+
+        },
+        complete: function () {
+            GetPackingTypeList();
+        }
+    });
+}
+
+const DeleteImage = (ImageId) => {
+
+
+    ShowLoader();
+
+    jQuery.ajax({
+        type: "Delete",
+        url: SetUrl("PackingType/DeletePackingTypeImage?packingTypeImageId=" + ImageId),
+        data: "",
+        headers: { "Authorization": `Bearer ${GetToken()}` },
+        success: function (response) {
+
+            Swal.fire(
+                'حدف شد !',
+                'تصویر مورد نظر حذف شد',
+                'success'
+            );
+            ViewDetails();
+            EndLoader();
+        },
+        error: function (response) {
+
+            if (response.status === 401) {
+
+                window.location = "/Account/Login";
+            }
+            console.log(response);
+            EndLoader();
+
+        },
+        complete: function () {
+
+
+
+        }
+    });
+}
+
 
 
 
@@ -307,8 +430,9 @@ $(document).ready(() => {
     $(document.body).on('click', '.UploadImage', (e) => {
 
 
-        Id = parseInt($(e.currentTarget).attr('ProductId'));
+        Id = parseInt($(e.currentTarget).attr('packingTypeId'));
         $('#txtOnvanTasvir').val('');
+        $('#txtTozihat').val('');
         $('#exampleInputFile').val('');
         $('.custom-file-label').text('انتخاب تصویر');
         $('#ImageModal').modal();
