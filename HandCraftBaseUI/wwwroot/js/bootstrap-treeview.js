@@ -38,8 +38,8 @@
 		emptyIcon: 'fa',
 		nodeIcon: '',
 		selectedIcon: '',
-		checkedIcon: 'glyphicon glyphicon-check',
-		uncheckedIcon: 'glyphicon glyphicon-unchecked',
+		checkedIcon: 'fa fa-check-square-o',
+		uncheckedIcon: 'fa fa-square-o',
 
 		color: undefined, // '#000000',
 		backColor: undefined, // '#FFFFFF',
@@ -696,7 +696,7 @@
 		badge: '<span class="badge"></span>'
 	};
 
-	Tree.prototype.css = '.treeview .list-group-item{cursor:pointer}.treeview span.indent{margin-left:10px;margin-right:10px}.treeview span.icon{width:12px;margin-right:5px}.treeview .node-disabled{color:silver;cursor:not-allowed}'
+	Tree.prototype.css = '.treeview .list-group-item{cursor:pointer}.treeview span.indent{margin-left:10px;margin-left:10px}.treeview span.icon{width:12px;margin-left:5px}.treeview .node-disabled{color:silver;cursor:not-allowed}'
 
 
 	/**

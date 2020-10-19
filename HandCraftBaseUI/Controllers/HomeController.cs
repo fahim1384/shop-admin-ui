@@ -53,6 +53,12 @@ namespace HandCraftBaseUI.Controllers
             return View();
         }
 
+        public IActionResult Parameters()
+        {
+
+            return View();
+        }
+
 
     }
 }

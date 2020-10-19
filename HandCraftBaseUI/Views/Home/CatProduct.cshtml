@@ -33,9 +33,12 @@
                 <div class="selectedmenu" style="display: none;">
                     <strong>دسته انتخابی :</strong>
                     <p id="lblMenuName"></p><br />
-                    <button type="button" id="btnAdd" class="btn btn-success w-25"><i class="fa fa-plus"></i>&nbsp; افزودن زیر دسته</button>
-                    <button type="button" id="btnEdit" class="btn btn-primary w-25"><i class="fa fa-edit"></i>&nbsp; ویرایش</button>
-                    <button type="button" id="btnRemove" class="btn btn-danger w-25"><i class="fa fa-trash"></i>&nbsp; حذف</button>
+                    <div class="row">
+                        <button type="button" id="btnAdd" class="btn btn-success "><i class="fa fa-plus"></i>&nbsp; افزودن زیر دسته</button> &nbsp;&nbsp;&nbsp;
+                        <button type="button" id="btnEdit" class="btn btn-primary"><i class="fa fa-edit"></i>&nbsp; ویرایش</button> &nbsp;&nbsp;&nbsp;
+                        <button type="button" id="btnRemove" class="btn btn-danger "><i class="fa fa-trash"></i>&nbsp; حذف</button>&nbsp;&nbsp;&nbsp;
+                        <button type="button" id="btnAddParams" class="btn btn-warning "><i class="fa fa-book"></i>&nbsp; افزودن پارامتر</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -65,7 +68,7 @@
                 </div>
                 <div class="form-group">
                     <label for="txtIcon" class="col-sm-2 control-label">آیکون:</label>
-                    <input type="text" class="form-control"  id="txtIcon" placeholder="آیکون" />
+                    <input type="text" class="form-control" id="txtIcon" placeholder="آیکون" />
                 </div>
                 <div class="form-group">
                     <label for="txtURL" class="col-sm-2 control-label">URL:</label>
@@ -82,6 +85,25 @@
     </div>
 </div>
 
+<div class="card card-success" id="ParametersDiv" style="display: none;">
+    <div class="card-header">
+        <h3 class="card-title">لیست پارامتر ها</h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <hr>
+
+            <div class="col-sm-6">
+                <div id="treeview-checkable" class=""></div>
+            </div>
+            <div class="col-sm-6">
+                <button type="button" id="btnAddparams" class="btn btn-success "><i class="fa fa-plus"></i>&nbsp; ثبت انخاب شده ها</button> &nbsp;&nbsp;&nbsp;
+                <button type="button" id="btncloseparam" class="btn btn-warning"><i class="fa fa-remove"></i>&nbsp; بازگشت</button> &nbsp;&nbsp;&nbsp;
+            </div>
+
+        </div>
+    </div>
+</div>
 
 @section scripts {
     <script src="~/js/bootstrap-treeview.js"></script>

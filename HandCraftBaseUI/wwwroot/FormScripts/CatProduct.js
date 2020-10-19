@@ -1,15 +1,16 @@
 ﻿let Id = 0;
 let Flag = 0;
+let parametersIdList = [];
 
 
-function GetCatProductList() {
+const GetCatProductList = () => {
 
 
 
 
     jQuery.ajax({
         type: "Get",
-        url: "/api/CatProduct/GetCatProductList",
+        url: SetUrl("CatProduct/GetCatProductList"),
         data: "",
         async: false,
         contentType: "application/json; charset=utf-8",
@@ -23,6 +24,8 @@ function GetCatProductList() {
             $('#treeview1').treeview({
                 data: s
             });
+
+
 
         },
         error: function (response) {
@@ -55,26 +58,33 @@ function InserCatProduct() {
 
     jQuery.ajax({
         type: "Post",
-        url: "/api/CatProduct/InserCatProduct",
+        url: SetUrl("CatProduct/InserCatProduct"),
         data: JSON.stringify(catProduct),
         async: false,
         contentType: "application/json; charset=utf-8",
+        headers: { "Authorization": `Bearer ${GetToken()}` },
         dataType: "text",
         success: function (response) {
             EndLoader();
+            $('#exampleModal').modal("hide");
             Swal.fire(
                 'ثبت شد !',
                 'دسته با موفقیت ثبت شد',
                 'success'
             );
             GetCatProductList();
-       
+
 
         },
         error: function (response) {
-            debugger
-            console.log(response);
+
             EndLoader();
+            if (response.status === 401) {
+
+                window.location = "/Account/Login";
+            }
+            console.log(response);
+
 
         },
         complete: function () {
@@ -89,7 +99,7 @@ function GetCatProductById() {
 
     jQuery.ajax({
         type: "Get",
-        url: `/api/CatProduct/GetCatProductById?catProductId=${Id}`,
+        url:SetUrl(`CatProduct/GetCatProductById?catProductId=${Id}`),
         data: "",
         async: false,
         contentType: "application/json; charset=utf-8",
@@ -137,20 +147,22 @@ function UpdateCatProduct() {
 
     jQuery.ajax({
         type: "Put",
-        url: "/api/CatProduct/UpdateCatProduct",
+        url:SetUrl("CatProduct/UpdateCatProduct"),
         data: JSON.stringify(catProduct),
         async: false,
         contentType: "application/json; charset=utf-8",
+        headers: { "Authorization": `Bearer ${GetToken()}` },
         dataType: "text",
         success: function (response) {
             EndLoader();
+            $('#exampleModal').modal("hide");
             Swal.fire(
                 'ثبت شد !',
                 'دسته با موفقیت بروز رسانی شد',
                 'success'
             );
             GetCatProductList();
-          
+
 
 
         },
@@ -172,10 +184,11 @@ function DeleteCatProduct() {
 
     jQuery.ajax({
         type: "Delete",
-        url: `/api/CatProduct/DeleteCatProduct?catProductId=${Id}`,
+        url: SetUrl(`CatProduct/DeleteCatProduct?catProductId=${Id}`),
         data: "",
         async: false,
         contentType: "application/json; charset=utf-8",
+        headers: { "Authorization": `Bearer ${GetToken()}` },
         dataType: "text",
         success: function (response) {
             Swal.fire(
@@ -196,6 +209,139 @@ function DeleteCatProduct() {
         }
     });
 }
+
+const UpdateCatProductParameters = () => {
+
+
+    ShowLoader();
+
+    jQuery.ajax({
+        type: "Put",
+        url: SetUrl(`CatProductParameters/UpdateCatProductParameters?catProductId=${Id}`),
+        data: JSON.stringify(parametersIdList),
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        headers: { "Authorization": `Bearer ${GetToken()}` },
+        dataType: "text",
+        success: function (response) {
+            EndLoader();
+            Swal.fire(
+                'ثبت شد !',
+                'پارامتر ها با موفقیت ثبت شد',
+                'success'
+            );
+            GetCatProductList();
+
+
+        },
+        error: function (response) {
+
+            EndLoader();
+            if (response.status === 401) {
+
+                window.location = "/Account/Login";
+            }
+            console.log(response);
+
+
+        },
+        complete: function () {
+
+        }
+    });
+}
+
+const GetCatProductParametersTreeByCatId = () => {
+
+    ShowLoader();
+
+    jQuery.ajax({
+        type: "Get",
+        url: SetUrl(`CatProductParameters/GetCatProductParametersTreeByCatId?catProductId=${Id}`),
+        data: "",
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        dataType: "text",
+        success: function (response) {
+
+
+            var s = (((response.replace(/'/g, '"')).replace(/,]/g, ']')).replace(/,}/g, '}')).replace(/,,/g, ',');
+
+            $('#treeview-checkable').treeview({
+                data: s,
+                showIcon: false,
+                showCheckbox: true,
+                selectable: false,
+                state: {
+                    expanded: true
+                },
+                highlightSelected: false,
+                onNodeChecked: function (event, node) {
+                    $('#checkable-output').prepend('<p>' + node.text + ' was checked</p>');
+                    parametersIdList.push(node.mid);
+                },
+                onNodeUnchecked: function (event, node) {
+                    $('#checkable-output').prepend('<p>' + node.text + ' was unchecked</p>');
+                    let idd = node.mid;
+                    parametersIdList = parametersIdList.filter(x => x !== idd);
+
+                }
+            });
+            GetCatProductParametersByCatId();
+            
+
+            
+
+        },
+        error: function (response) {
+
+            console.log(response);
+
+        },
+        complete: function () {
+            EndLoader();
+
+        }
+    });
+}
+
+const GetCatProductParametersByCatId = () => {
+
+    ShowLoader();
+
+    jQuery.ajax({
+        type: "Get",
+        url: SetUrl(`CatProductParameters/GetCatProductParametersByCatId?catProductId=${Id}`),
+        data: "",
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (response) {
+
+            parametersIdList = [];
+            jQuery.each(response, (i, item) => {
+
+                parametersIdList.push(item);
+
+            });
+            jQuery("#ParametersDiv").show();
+
+        },
+        error: function (response) {
+
+            console.log(response);
+
+        },
+        complete: function () {
+            EndLoader();
+
+        }
+    });
+}
+
+
+
+
 
 
 
@@ -302,5 +448,28 @@ $(document).ready(() => {
         GetCatProductById();
 
     });
+
+    $(document.body).on('click', '#btnAddParams', function () {
+
+
+        GetCatProductParametersTreeByCatId();
+
+
+    });
+
+    $(document.body).on('click', '#btncloseparam', function () {
+
+        jQuery("#ParametersDiv").hide();
+
+    });
+
+    $(document.body).on('click', '#btnAddparams', function () {
+
+        UpdateCatProductParameters();
+
+    });
+
+
+
 
 });
