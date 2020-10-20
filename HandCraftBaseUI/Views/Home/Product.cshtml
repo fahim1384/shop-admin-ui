@@ -43,21 +43,132 @@
     <!-- /.card-header -->
     <div class="card-body">
         <div class="row">
-            <div class="col text-center">
-                <input type="button" value="افزودن محصول جدید" class="btn btn-primary" id="btnJadid" />
+            <div class="col-md-3">
+                <div class="card card-light">
+                    <div class="card-header">
+                        <h3 class="card-title">دسته بندی محصول</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+
+                        <hr />
+                        <div class="row">
+                            <div class="selectedmenu" style="display: none;">
+                                <strong>دسته انتخابی :</strong>
+                                <p id="lblMenuName"></p><br />
+                            </div>
+                            <div id="treeview1" class="w-100"></div>
+
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
             </div>
-            <div class="col text-center">
-                <input type="button" value="افزودن محصول جدید" class="btn btn-primary" id="btnJadid" />
-            </div>
-            <div class="col text-center">
-                <input type="button" value="افزودن محصول جدید" class="btn btn-primary" id="btnJadid" />
-            </div>
-            <div class="col text-center">
-                <input type="button" value="افزودن محصول جدید" class="btn btn-primary" id="btnJadid" />
+            <div class="col-md-9">
+                <div class="card card-light">
+                    <div class="card-header">
+                        <h3 class="card-title"> مشخصات محصول</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-md-4 form-group">
+                                <label>نام :</label>
+                                <input id="txtname" type="text" class="form-control" placeholder="نام">
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label>فروشنده :</label>
+                                <select id="cmbSeller" dir="rtl" class="js-example-basic-single w-100 form-control" name="state">
+                                    <option value="-1">انتخاب کنید</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label>کد محصول :</label>
+                                <input id="txtcoding" type="text" class="form-control" placeholder="کد محصول" disabled>
+                            </div>
+
+                            <div class="col-md-4 form-group">
+                                <label>قیمت :</label>
+                                <input id="txtprice" type="text" class="form-control" placeholder="قیمت">
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label>تعداد اولیه :</label>
+                                <input id="txtcount" type="text" class="form-control" placeholder="تعداد اولیه">
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label>وزن :</label>
+                                <input id="txtweight" type="text" class="form-control" placeholder="وزن">
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <input id="mellicode" type="checkbox" checked>&nbsp;&nbsp;<label for="mellicode">شناسه ملی </label>
+                                <input id="txtmellicode" type="text" class="form-control" placeholder="شناسه ملی">
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <input id="unesco" type="checkbox" checked>&nbsp;&nbsp;<label for="unesco">شناسه یونسکو</label>
+                                <input id="txtunescocode" type="text" class="form-control" placeholder="شناسه یونسکو">
+
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label>کلمه کلیدی :</label>
+                                <input id="txtkeyword" type="text" class="form-control" placeholder="کلمه کلیدی">
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label for="exampleInputFile">تصویر کاور :</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="exampleInputFile">
+                                        <label class="custom-file-label btn btn-info" for="exampleInputFile">انتخاب تصویر</label>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label>رنگ ها :</label>
+                                <select id="cmbColor" dir="rtl" class="js-example-basic-multiple w-100" name="states[]" multiple="multiple">
+                                </select>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>نوع بسته بندی :</label>
+                                <select id="cmbPacking" dir="rtl" class="js-example-basic-multiple w-100" name="states[]" multiple="multiple">
+                                </select>
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <label>محصولات مرتبط :</label>
+                                <select id="cmbrelevent" dir="rtl" class="js-example-basic-multiple w-100" name="states[]" multiple="multiple">
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
             </div>
         </div>
- 
-        
+        <div class="row">
+            <div class="card card-light">
+                <div class="card-header">
+                    <h3 class="card-title">لیست پارامترها</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+
+                    <div class="row" id="paramsDiv">
+                       
+                    </div>
+                </div>
+                <!-- /.card-body -->
+            </div>
+
+        </div>
+
+        <div class="card-footer text-center">
+            <button type="button" id="btnSabt" class="btn btn-success w-25"><i class="fa fa-check"></i>&nbsp; ثبت</button>
+            <button type="button" class="btn btn-warning w-25"><i class="fa fa-remove"></i>&nbsp; انصراف</button>
+
+        </div>
     </div>
     <!-- /.card-body -->
 </div>
@@ -67,7 +178,7 @@
 
 
 @section scripts {
-
+    <script src="~/js/bootstrap-treeview.js"></script>
     <script src="~/FormScripts/Product.js"></script>
 
 }
