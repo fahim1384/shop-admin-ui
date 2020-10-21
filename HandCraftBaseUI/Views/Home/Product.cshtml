@@ -15,7 +15,7 @@
 </div>
 <!-- /.content-header -->
 
-<div class="card card-primary">
+<div class="card card-primary" id="PanelList">
     <div class="card-header">
         <h3 class="card-title">لیست محصولات</h3>
     </div>
@@ -36,7 +36,7 @@
     <!-- /.card-body -->
 </div>
 
-<div class="card card-info">
+<div class="card card-info" style="display: none;" id="EditPanel">
     <div class="card-header">
         <h3 class="card-title">ثبت و ویرایش محصول</h3>
     </div>
@@ -83,10 +83,10 @@
                                     <option value="-1">انتخاب کنید</option>
                                 </select>
                             </div>
-                            <div class="col-md-4 form-group">
+                            @*<div class="col-md-4 form-group">
                                 <label>کد محصول :</label>
                                 <input id="txtcoding" type="text" class="form-control" placeholder="کد محصول" disabled>
-                            </div>
+                            </div>*@
 
                             <div class="col-md-4 form-group">
                                 <label>قیمت :</label>
@@ -147,30 +147,31 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="card card-light">
-                <div class="card-header">
-                    <h3 class="card-title">لیست پارامترها</h3>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-
-                    <div class="row" id="paramsDiv">
-                       
-                    </div>
-                </div>
-                <!-- /.card-body -->
-            </div>
-
-        </div>
 
         <div class="card-footer text-center">
             <button type="button" id="btnSabt" class="btn btn-success w-25"><i class="fa fa-check"></i>&nbsp; ثبت</button>
-            <button type="button" class="btn btn-warning w-25"><i class="fa fa-remove"></i>&nbsp; انصراف</button>
-
+            <button type="button" class="btn btn-warning w-25" id="btnBazgasht"><i class="fa fa-remove"></i>&nbsp; انصراف</button>
         </div>
     </div>
     <!-- /.card-body -->
+</div>
+
+<div class="card card-warning" style="display: none;" id="ParamPanel">
+    <div class="card-header">
+        <h3 class="card-title">لیست پارامترها</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+
+        <div class="row" id="paramsDiv">
+                       
+        </div>
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer text-center">
+        <button type="button" id="btnSabtParams" class="btn btn-success w-25"><i class="fa fa-check"></i>&nbsp; ثبت</button>
+        <button type="button" class="btn btn-warning w-25" id="btnBazgashtParams"><i class="fa fa-remove"></i>&nbsp; انصراف</button>
+    </div>
 </div>
 
 
