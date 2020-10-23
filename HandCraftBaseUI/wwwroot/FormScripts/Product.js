@@ -13,11 +13,12 @@ const GetProductList = () => {
                     <th>نام</th>
                     <th>دسته بندی محصول</th>
                     <th>فروشنده</th>
-                    <th>Rkey</th>
                     <th>کدینگ</th>
                     <th>قیمت</th>
                     <th>وزن</th>
                     <th>پارامترها</th>
+                    <th>فیلم و عکس</th>
+                    <th>تخفیفات</th>
                     <th>مشاهده جزئیات</th>
                     <th>ویرایش</th>
                     <th>حدف</th>
@@ -44,12 +45,13 @@ const GetProductList = () => {
                             <td>${i + 1}</td>
                             <td>${item.name}</td>
                             <td>${item.catProductName}</td>
-                             <td>${item.se}</td>
-                             <td>${item.rkey}</td>
+                             <td>${item.seller}</td>
                              <td>${item.coding}</td>
                              <td>${item.price}</td>
                              <td>${item.weight}</td>
                             <td class="tdTextCenter"><span class="Parameters" catProductId="${item.catProductId}" productId="${item.id}" ><i class="fa fa-book text text-primary"></i></span></td>
+                            <td class="tdTextCenter"><span class="Photos" productId="${item.id}" ><i class="fa fa-file-image-o text text-warning"></i></span></td> 
+                            <td class="tdTextCenter"><span class="Offer" productId="${item.id}" ><i class="fa fa-percent text text-info"></i></span></td>
                             <td class="tdTextCenter"><span class="Joziyat" productId="${item.id}" ><i class="fa fa-search text text-success"></i></span></td>
                             <td class="tdTextCenter"><span class="Edit" productId="${item.id}" ><i class="fa fa-edit text text-info"></i></span></td>
                             <td class="tdTextCenter"><span class="Trash" productId="${item.id}" ><i class="fa fa-trash text text-danger"></i></span></td>
@@ -135,7 +137,7 @@ const GetColorList = () => {
 
 
             $('#cmbColor').html(html);
-            $('#cmbColor').select2();
+
 
 
         },
@@ -178,7 +180,7 @@ const GetPackingTypeList = () => {
 
 
             $('#cmbPacking').html(html);
-            $('#cmbPacking').select2();
+
 
         },
         error: (response) => {
@@ -212,13 +214,13 @@ const GetProductParamList = () => {
 
 
                 html += `<div class="col-md-3 form-group">
-                                <label>${item.name} :</label>`;
+                                <label>${item.parameterName} :</label>`;
                 if (item.value == null) {
 
-                    html += `<input id="txtParam${item.id}" type="text" class="form-control" placeholder="${item.name}" />
+                    html += `<input id="txtParam${item.id}" type="text" catId="${item.catProductParametersId}" paramId="${item.id}" class="form-control paramtext" placeholder="${item.parameterName}" />
                               </div>`;
                 } else {
-                    html += `<input id="txtParam${item.id}" type="text" class="form-control" placeholder="${item.name}" value="${item.value}" />
+                    html += `<input id="txtParam${item.id}" type="text" catId="${item.catProductParametersId}" paramId="${item.id}" class="form-control paramtext" placeholder="${item.parameterName}" value="${item.value}" />
                               </div>`;
                 }
 
@@ -260,13 +262,13 @@ const GetSellerList = () => {
 
 
             jQuery.each(response, (i, item) => {
-                html += ` <option value="${item.id}">${item.name}</option>`;
+                html += ` <option value="${item.id}">${item.name + " " + item.fname}</option>`;
             });
 
 
 
             $('#cmbSeller').html(html);
-            $('#cmbSeller').select2();
+
 
 
         },
@@ -277,6 +279,43 @@ const GetSellerList = () => {
         },
         complete: () => {
 
+
+        }
+    });
+}
+
+const GetProductStatusList = () => {
+
+
+    let html = ``;
+
+    jQuery.ajax({
+        type: "Get",
+        url: SetUrl("Product/GetProductStatusList"),
+        data: "",
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: (response) => {
+
+
+            jQuery.each(response, (i, item) => {
+                html += ` <option value="${item.id}">${item.name}</option>`;
+            });
+
+
+
+            $('#cmbStatus').html(html);
+
+
+
+        },
+        error: (response) => {
+
+            console.log(response);
+
+        },
+        complete: () => {
 
         }
     });
@@ -416,18 +455,252 @@ const InsertProduct = () => {
 
 }
 
+const UpdateParams = () => {
+
+
+    let paramList = [];
+    $(".paramtext").each(function (item, i) {
+
+        let param = {
+            id: parseInt($(this).attr("paramId")),
+            catProductParametersId: parseInt($(this).attr("catId")),
+            productId: Id,
+            parameterName: '',
+            value: $(this).val()
+        }
+        paramList.push(param);
+
+    });
+
+
+
+    ShowLoader();
+
+    jQuery.ajax({
+        type: "Put",
+        url: SetUrl("Product/UpdateProductParam"),
+        data: JSON.stringify(paramList),
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        headers: { "Authorization": `Bearer ${GetToken()}` },
+        dataType: "text",
+        success: (response) => {
+            EndLoader();
+            Swal.fire(
+                'ثبت شد !',
+                'اطلاعات با موفقیت ثبت شد',
+                'success'
+            );
+
+            $("#ParamPanel").hide();
+            $("#PanelList").show();
+            GetProductList();
+
+        },
+        error: (response) => {
+
+            if (response.status === 401) {
+
+                window.location = "/Account/Login";
+            }
+
+        },
+        complete: () => {
+
+        }
+    });
+
+
+
+}
+
+const GetImageListByProductId = () => {
+
+
+    let html = ``;
+
+    jQuery.ajax({
+        type: "Get",
+        url: SetUrl(`ProductImage/GetImageListByProductId?productId=${Id}`),
+        data: "",
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: (response) => {
+
+
+            jQuery.each(response, (i, item) => {
+
+                html += `<div class="col-md-4">
+                        <div class="card" style="width: 18rem;">`;
+                if (item.fileType === 1) {
+
+                    html += ` <img class="card-img-top" src="${item.imageUrl}" alt="Card image cap" style="height:300px;" >`;
+                }
+
+                else {
+
+                    html += `<video id="Video" src="${item.imageUrl}" class="embed-responsive-item" controls style="height:300px;">
+                                <source src="/video/video.mp4" type="video/mp4" />
+                                <source src="/video/video.ogv" type="video/ogg" />
+                                <source src="/video/video.webm" type="video/webm" />
+                            </video>`;
+                }
+
+
+                html += `       <div class="card-body text-center">
+                                <p class="card-text">${item.title}</p>
+                                <button type="button"  imageId="${item.id}" class="btn btn-danger btnRemoveImage"><i class="fa fa-trash"></i>&nbsp; حذف</button>
+                            </div>
+                         </div>
+                        </div>`;
+            });
+
+
+
+            $('#FileDiv').html(html);
+            $("#ImagePanel").show();
+            $("#PanelList").hide();
+
+
+        },
+        error: (response) => {
+
+            console.log(response);
+
+        },
+        complete: () => {
+
+
+        }
+    });
+}
+
+const UploadImage = () => {
+
+
+    var myfile = $("#SmallInputFile");
+    var formData = new FormData();
+
+    formData.append('ImageFile', myfile[0].files[0]);
+
+
+    ShowLoader();
+
+    jQuery.ajax({
+        type: "Post",
+        url: SetUrl(`ProductImage/UploadImage?productId=${Id}&type=${$('#CmbFileType').val()}&title=${$('#txtOnvanTasvir').val()}`),
+        data: formData,
+        contentType: false,
+        processData: false,
+        headers: { "Authorization": `Bearer ${GetToken()}` },
+        success: function (response) {
+            EndLoader();
+
+            Swal.fire(
+                'ثبت شد !',
+                'فایل با موفقیت ثبت شد',
+                'success'
+            );
+
+            GetImageListByProductId();
+
+            $('#txtOnvanTasvir').val('');
+            $('#CmbType').val(1);
+            $('.custom-file-label').text('انتخاب فایل');
+            $("#SmallInputFile").val('');
+
+
+        },
+        error: function (response) {
+
+
+            EndLoader();
+            let textalert = response.responseText;
+            Swal.fire({
+                icon: 'error',
+                title: 'خطا در بازگذاری !',
+                text: textalert
+
+            });
+
+        },
+        complete: function () {
+
+        }
+    });
+}
+
+const DeleteProductImage = (imageId) => {
+
+    ShowLoader();
+
+    jQuery.ajax({
+        type: "Delete",
+        url: SetUrl("ProductImage/DeleteProductImage?productImageId=" + imageId),
+        data: "",
+        headers: { "Authorization": `Bearer ${GetToken()}` },
+        success: function (response) {
+
+            Swal.fire(
+                'حدف شد !',
+                'فایل مورد نظر حذف شد',
+                'success'
+            );
+            GetImageListByProductId();
+            EndLoader();
+        },
+        error: function (response) {
+
+            if (response.status === 401) {
+
+                window.location = "/Account/Login";
+            }
+            console.log(response);
+            EndLoader();
+
+        },
+        complete: function () {
+
+
+
+        }
+    });
+
+}
+
 
 $(document).ready(() => {
 
     ShowLoader();
     GetProductList();
     GetCatProductList();
-    GetColorList();
-    GetPackingTypeList();
-    GetSellerList();
     EndLoader();
 
-    $('#cmbSeller').select2();
+    $('#treeview1').on('nodeSelected', function (event, data) {
+
+        let node = $('#treeview1').treeview('getSelected');
+        if (node.length > 0) {
+            catProductId = node[0].mid;
+            $('#lblMenuName').html(node[0].text);
+            $('.selectedmenu').show();
+        } else {
+
+            catProductId = 0;
+            $('#lblMenuName').html('');
+            $('.selectedmenu').hide();
+        }
+
+    });
+
+    $('#treeview1').on('nodeUnselected', function (event, node) {
+
+        catProductId = 0;
+        $('#lblMenuName').html('');
+        $('.selectedmenu').hide();
+
+
+    });
 
     $(document.body).on('change', '#exampleInputFile', function () {
 
@@ -513,8 +786,15 @@ $(document).ready(() => {
 
     $(document.body).on('click', '#btnJadid', () => {
 
+
+        GetColorList();
+        GetPackingTypeList();
+        GetSellerList();
+        GetProductStatusList();
         $("#EditPanel").show();
         $("#PanelList").hide();
+        $('.js-example-basic-multiple').select2();
+        $('.js-example-basic-single').select2();
 
     });
 
@@ -524,12 +804,107 @@ $(document).ready(() => {
         $("#PanelList").show();
 
     });
-    
+
     $(document.body).on('click', '#btnBazgashtParams', () => {
 
         $("#ParamPanel").hide();
         $("#PanelList").show();
 
     });
+
+    $(document.body).on('click', '#btnSabtParams', () => {
+
+        UpdateParams();
+
+    });
+
+    $(document.body).on('click', '.Photos', function () {
+
+
+        Id = parseInt($(this).attr('productId'));
+        GetImageListByProductId();
+
+    });
+
+    $(document.body).on('click', '#btnSabtImage', () => {
+
+
+        let textalert = "";
+
+        if ($('#txtOnvanTasvir').val().length === 0) {
+            textalert += `عنوان را وارد نمایید`;
+        }
+        else if ($('#SmallInputFile').val().length === 0) {
+            textalert += `فایلی جهت بارگزاری انتخاب نشده است !`;
+            Swal.fire({
+                icon: 'error',
+                title: 'فیلدهای اجباری را وارد نمایید !',
+                text: textalert
+
+            });
+        }
+
+
+        if (textalert !== "") {
+
+            Swal.fire({
+                icon: 'error',
+                title: 'فیلدهای اجباری را وارد نمایید !',
+                text: textalert
+
+            });
+        } else {
+
+            UploadImage();
+        }
+
+
+    });
+
+    $(document.body).on('click', '.btnRemoveImage', function () {
+
+
+        let imageId = parseInt($(this).attr('imageId'));
+        Swal.fire({
+            title: 'آیا اطمینان دارید؟',
+            text: "بعد از حذف امکان بازگردانی وجود ندارد!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'خیر',
+            confirmButtonText: 'بله !'
+        }).then((result) => {
+            if (result.value) {
+                DeleteProductImage(imageId);
+            }
+        });
+
+
+    });
+
+    $(document.body).on('change', '#SmallInputFile', function () {
+
+
+        if ($(this).val() == '') {
+            $('.custom-file-label').text('انتخاب فایل');
+        }
+        else {
+            var myfile = $("#SmallInputFile");
+
+            $('.custom-file-label').text(myfile[0].files[0].name);
+
+        }
+
+
+    });
+
+    $(document.body).on('click', '#btnBazgashtImage', () => {
+
+        $("#ImagePanel").hide();
+        $("#PanelList").show();
+
+    });
+
 
 });

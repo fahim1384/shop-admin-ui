@@ -1,16 +1,42 @@
 ﻿
 @{
     ViewData["Title"] = "Login";
+    Layout = null;
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>پنل مدیریت | صفحه ورود</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<div class="login-box">
-    <div class="login-logo">
-        <a href="../../index2.html"><b>ورود به پنل مدیریت</b></a>
-    </div>
-    <!-- /.login-logo -->
-    <div class="card">
-        <div class="card-body login-card-body">
-            <p class="login-box-msg">فرم زیر را تکمیل کنید و ورود بزنید</p>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link href="~/dist/css/adminlte.min.css" rel="stylesheet" />
+    <!-- iCheck -->
+    <link href="~/plugins/iCheck/square/blue.css" rel="stylesheet" />
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <!-- bootstrap rtl -->
+    <link href="~/dist/css/bootstrap-rtl.min.css" rel="stylesheet" />
+    <!-- template rtl version -->
+    <link href="~/dist/css/custom-style.css" rel="stylesheet" />
+</head>
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="#"><b>ورود به پنل مدیریت</b></a>
+        </div>
+        <!-- /.login-logo -->
+        <div class="card">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">فرم زیر را تکمیل کنید و ورود بزنید</p>
 
                 <div class="input-group mb-3">
                     <input type="text" name="username" id="txtusername" class="form-control" placeholder="نام کاربری">
@@ -39,21 +65,28 @@
                     <!-- /.col -->
                 </div>
 
-            <!-- /.social-auth-links -->
+                <!-- /.social-auth-links -->
 
-            <p class="mb-1">
-                <a href="#">رمز عبورم را فراموش کرده ام.</a>
-            </p>
-            <p class="mb-0">
-                <a href="register.html" class="text-center">ثبت نام</a>
-            </p>
+                <p class="mb-1">
+                    <a href="#">رمز عبورم را فراموش کرده ام.</a>
+                </p>
+                <p class="mb-0">
+                    <a href="register.html" class="text-center">ثبت نام</a>
+                </p>
+            </div>
+            <!-- /.login-card-body -->
         </div>
-        <!-- /.login-card-body -->
     </div>
-</div>
 
-@section scripts {
+    <!-- jQuery -->
+    <script src="~/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/plugins/bootstrap/js/bootstrap.bundle.js"></script>
+    <!-- iCheck -->
+    <script src="~/plugins/iCheck/icheck.min.js"></script>
 
+    <script src="~/dist/js/sweetalert2.all.min.js"></script>
+    <script src="~/js/Site.js"></script>
     <script src="~/FormScripts/Login.js"></script>
-
-}
+</body>
+</html>
