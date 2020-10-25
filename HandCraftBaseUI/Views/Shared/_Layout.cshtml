@@ -132,7 +132,7 @@
                             role="menu"
                             data-accordion="false">
                             <!-- Add icons to the links using the .nav-icon class
-                            with font-awesome or any other icon font library -->
+    with font-awesome or any other icon font library -->
                             <li class="nav-item">
                                 <a asp-controller="Home" asp-action="CatProduct" class="nav-link">
                                     <i class="nav-icon fa fa-newspaper-o"></i>
@@ -169,7 +169,13 @@
                                     <p> نظرات فاخر</p>
                                 </a>
                             </li>
-
+                            <li class="nav-item">
+                                <a asp-controller="Home" asp-action="SliderPlace" class="nav-link">
+                                    <i class="nav-icon fa fa-newspaper-o"></i>
+                                    <p> محل اسلایدر</p>
+                                </a>
+                            </li>
+                            
                             <li class="nav-item">
 
                                 <a onclick="localStorage.clear(); window.location = '/Account/Login';" class="nav-link" style="cursor:pointer">

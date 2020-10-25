@@ -35,6 +35,11 @@ namespace HandCraftBaseUI.Controllers
             return View();
         }
 
+        public IActionResult SliderPlace()
+        {
+
+            return View();
+        }
         public IActionResult Slider()
         {
 
@@ -58,6 +63,8 @@ namespace HandCraftBaseUI.Controllers
 
             return View();
         }
+
+   
 
 
     }

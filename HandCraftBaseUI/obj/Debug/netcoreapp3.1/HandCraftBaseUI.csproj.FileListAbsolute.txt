@@ -808,3 +808,4 @@ C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\n
 C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\Slider.cshtml.g.cs
 C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\FamousComments.cshtml.g.cs
 C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\Parameters.cshtml.g.cs
+C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\SliderPlace.cshtml.g.cs

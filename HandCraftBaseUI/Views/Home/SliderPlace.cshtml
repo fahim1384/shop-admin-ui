@@ -17,13 +17,13 @@
 
 <div class="card card-primary" id="PnlList">
     <div class="card-header">
-        <h3 class="card-title">لیست اسلایدر ها</h3>
+        <h3 class="card-title">لیست محل اسلایدر ها</h3>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
         <div class="row">
             <div class="col text-center">
-                <input type="button" value="افزودن اسلایدر جدید" class="btn btn-primary" id="btnJadid" />
+                <input type="button" value="افزودن محل جدید" class="btn btn-primary" id="btnJadid" />
             </div>
         </div>
         <hr />
@@ -44,35 +44,16 @@
                 <h5 class="modal-title" id="exampleModalLabel">ثبت/ویرایش </h5>
             </div>
             <div class="modal-body">
-                <div class="form-group">
-                    <label for="CmbSliderPlace" class="control-label">محل اسلایدر:</label>
-                    <select class="form-control" id="CmbSliderPlace">
-                    </select>
-                </div>
+               
                 <div class="form-group">
                     <label for="txtName" class="col-sm-2 control-label">نام:</label>
                     <input type="text" class="form-control" id="txtName" placeholder="نام" />
                 </div>
                 <div class="form-group">
-                    <label for="txtOrder" class="col-sm-2 control-label">ردیف:</label>
-                    <input type="number" class="form-control" id="txtOrder" placeholder="ردیف" />
+                    <label for="txtRkey" class="col-sm-2 control-label">ردیف:</label>
+                    <input type="number" class="form-control" id="txtRkey" placeholder="Rkey" />
                 </div>
-                <div class="form-group">
-                    <label for="txtLink" class="col-sm-2 control-label">لینک:</label>
-                    <input type="text" class="form-control" id="txtLink" placeholder="لینک" />
-                </div>
-               
-                <div class="form-group">
-                    <label for="ImageUplodaer">انتخاب تصویر</label>
-                    <div class="input-group">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="ImageUplodaer">
-                            <label class="custom-file-label btn btn-info" for="ImageUplodaer">انتخاب تصویر</label>
-                        </div>
 
-                    </div>
-                </div>
-            
             </div>
             <div class="modal-footer btn-group">
                 <button type="button" id="btnSabt" class="btn btn-success w-25"><i class="fa fa-check"></i>&nbsp; ثبت</button>
@@ -86,7 +67,7 @@
 
 @section scripts {
 
-    <script src="~/FormScripts/Slider.js"></script>
+    <script src="~/FormScripts/SliderPlace.js"></script>
 
 }
 

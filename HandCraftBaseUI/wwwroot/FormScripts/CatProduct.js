@@ -1,5 +1,6 @@
 ﻿let Id = 0;
 let Flag = 0;
+let main = 0;
 let parametersIdList = [];
 
 
@@ -18,13 +19,11 @@ const GetCatProductList = () => {
         success: function (response) {
 
 
-
             var s = (((response.replace(/'/g, '"')).replace(/,]/g, ']')).replace(/,}/g, '}')).replace(/,,/g, ',');
 
             $('#treeview1').treeview({
                 data: s
             });
-
 
 
         },
@@ -53,6 +52,19 @@ function InserCatProduct() {
         url: $('#txtURL').val()
 
     }
+    if (main == 1) {
+
+        catProduct = {
+            id: 0,
+            pid: null,
+            name: $('#txtName').val(),
+            coding: parseInt($('#txtCodding').val()),
+            rkey: parseInt($('#txtRkey').val()),
+            icon: $('#txtIcon').val(),
+            url: $('#txtURL').val()
+
+        }
+    }
 
     ShowLoader();
 
@@ -65,6 +77,7 @@ function InserCatProduct() {
         headers: { "Authorization": `Bearer ${GetToken()}` },
         dataType: "text",
         success: function (response) {
+            GetCatProductList();
             EndLoader();
             $('#exampleModal').modal("hide");
             Swal.fire(
@@ -72,8 +85,9 @@ function InserCatProduct() {
                 'دسته با موفقیت ثبت شد',
                 'success'
             );
-            GetCatProductList();
-
+            setTimeout(function () { window.location.reload(); }, 1000);
+       
+          
 
         },
         error: function (response) {
@@ -161,7 +175,7 @@ function UpdateCatProduct() {
                 'دسته با موفقیت بروز رسانی شد',
                 'success'
             );
-            GetCatProductList();
+            setTimeout(function () { window.location.reload(); }, 1000);
 
 
 
@@ -196,7 +210,7 @@ function DeleteCatProduct() {
                 'دسته با موفقیت حذف شد',
                 'success'
             );
-            GetCatProductList();
+            setTimeout(function () { window.location.reload(); }, 1000);
         },
         error: function (response) {
 
@@ -359,11 +373,13 @@ $(document).ready(() => {
             Id = node[0].mid;
             $('#lblMenuName').html(node[0].text);
             $('.selectedmenu').show();
+            $('.nonselectedmenu').hide();
         } else {
 
             Id = 0;
             $('#lblMenuName').html('');
             $('.selectedmenu').hide();
+            $('.nonselectedmenu').show();
         }
 
     });
@@ -371,8 +387,8 @@ $(document).ready(() => {
     $('#treeview1').on('nodeUnselected', function (event, node) {
 
         Id = 0;
-        $('#lblMenuName').html('');
         $('.selectedmenu').hide();
+        $('.nonselectedmenu').show();
 
 
     });
@@ -381,6 +397,15 @@ $(document).ready(() => {
 
         $('#exampleModal').modal();
         Flag = 0;
+        main = 0;
+
+    });
+
+    $(document.body).on('click', '#btnAddMain', function () {
+
+        $('#exampleModal').modal();
+        Flag = 0;
+        main = 1;
 
     });
 
