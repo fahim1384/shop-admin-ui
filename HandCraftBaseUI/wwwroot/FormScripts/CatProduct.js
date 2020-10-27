@@ -43,39 +43,45 @@ function InserCatProduct() {
 
 
     let catProduct = {
-        id: 0,
-        pid: Id,
-        name: $('#txtName').val(),
-        coding: parseInt($('#txtCodding').val()),
-        rkey: parseInt($('#txtRkey').val()),
-        icon: $('#txtIcon').val(),
-        url: $('#txtURL').val()
+        Id: 0,
+        Pid: Id,
+        Name: $('#txtName').val(),
+        Coding: parseInt($('#txtCodding').val()),
+        Rkey: parseInt($('#txtRkey').val()),
+        Icon:'',
+        Url: $('#txtURL').val()
 
     }
     if (main == 1) {
 
         catProduct = {
-            id: 0,
-            pid: null,
-            name: $('#txtName').val(),
-            coding: parseInt($('#txtCodding').val()),
-            rkey: parseInt($('#txtRkey').val()),
-            icon: $('#txtIcon').val(),
-            url: $('#txtURL').val()
+            Id: 0,
+            Pid: null,
+            Name: $('#txtName').val(),
+            Coding: parseInt($('#txtCodding').val()),
+            Rkey: parseInt($('#txtRkey').val()),
+            Icon: '',
+            Url: $('#txtURL').val()
 
         }
     }
+    var myfile = $("#exampleInputFile");
+
+    var formData = new FormData();
+
+
+    formData.append('Icon', myfile[0].files[0]);
+    formData.append('catProduct', JSON.stringify(catProduct));
 
     ShowLoader();
 
     jQuery.ajax({
         type: "Post",
-        url: SetUrl("CatProduct/InserCatProduct"),
-        data: JSON.stringify(catProduct),
-        async: false,
-        contentType: "application/json; charset=utf-8",
+        url: SetUrl("CatProduct/InsertCatProduct"),
+        data: formData,
+        contentType: false,
+        processData: false,
         headers: { "Authorization": `Bearer ${GetToken()}` },
-        dataType: "text",
         success: function (response) {
             GetCatProductList();
             EndLoader();
@@ -86,9 +92,7 @@ function InserCatProduct() {
                 'success'
             );
             setTimeout(function () { window.location.reload(); }, 1000);
-       
-          
-
+            
         },
         error: function (response) {
 
@@ -149,24 +153,30 @@ function UpdateCatProduct() {
     ShowLoader();
 
     let catProduct = {
-        id: Id,
-        pid: null,
-        name: $('#txtName').val(),
-        coding: parseInt($('#txtCodding').val()),
-        rkey: parseInt($('#txtRkey').val()),
-        icon: $('#txtIcon').val(),
-        url: $('#txtURL').val()
+        Id: Id,
+        Pid: null,
+        Name: $('#txtName').val(),
+        Coding: parseInt($('#txtCodding').val()),
+        Rkey: parseInt($('#txtRkey').val()),
+        Icon: $('#txtIcon').val(),
+        Url: $('#txtURL').val()
 
     }
+
+    var myfile = $("#exampleInputFile");
+    var formData = new FormData();
+
+
+    formData.append('Icon', myfile[0].files[0]);
+    formData.append('catProduct', JSON.stringify(catProduct));
 
     jQuery.ajax({
         type: "Put",
         url:SetUrl("CatProduct/UpdateCatProduct"),
-        data: JSON.stringify(catProduct),
-        async: false,
-        contentType: "application/json; charset=utf-8",
+        data: formData,
+        contentType: false,
+        processData: false,
         headers: { "Authorization": `Bearer ${GetToken()}` },
-        dataType: "text",
         success: function (response) {
             EndLoader();
             $('#exampleModal').modal("hide");
@@ -491,6 +501,22 @@ $(document).ready(() => {
     $(document.body).on('click', '#btnAddparams', function () {
 
         UpdateCatProductParameters();
+
+    });
+
+    $(document.body).on('change', '#exampleInputFile', function () {
+
+
+        if ($(this).val() == '') {
+            $('.custom-file-label').text('انتخاب تصویر');
+        }
+        else {
+            var myfile = $("#exampleInputFile");
+
+            $('.custom-file-label').text(myfile[0].files[0].name);
+
+        }
+
 
     });
 

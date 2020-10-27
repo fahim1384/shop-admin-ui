@@ -1,4 +1,5 @@
 ﻿<!-- Content Header (Page header) -->
+<link href="~/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" />
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -93,15 +94,15 @@
 
                             <div class="col-md-4 form-group">
                                 <label>قیمت :</label>
-                                <input id="txtprice" type="text" class="form-control" placeholder="قیمت">
+                                <input id="txtprice" type="number" class="form-control" placeholder="قیمت">
                             </div>
                             <div class="col-md-4 form-group">
                                 <label>تعداد اولیه :</label>
-                                <input id="txtcount" type="text" class="form-control" placeholder="تعداد اولیه">
+                                <input id="txtcount" type="number" class="form-control" placeholder="تعداد اولیه">
                             </div>
                             <div class="col-md-4 form-group">
                                 <label>وزن :</label>
-                                <input id="txtweight" type="text" class="form-control" placeholder="وزن">
+                                <input id="txtweight" type="number" class="form-control" placeholder="وزن">
                             </div>
                             <div class="col-md-4 form-group">
                                 <input id="mellicode" type="checkbox" checked>&nbsp;&nbsp;<label for="mellicode">شناسه ملی </label>
@@ -144,6 +145,17 @@
                                 </select>
                             </div>
 
+                        </div>
+                        <div class="row">
+                            <div class="card card-light form-control">
+                                <div class="card-header">
+                                    <h3 class="card-title">توضیحات</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <textarea dir="rtl" class="form-control" id="txtdesc"></textarea>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-- /.card-body -->
@@ -226,7 +238,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body row" id="FileDiv">
-                        
+
                     </div>
                 </div>
             </div>
@@ -245,6 +257,7 @@
 
 @section scripts {
     <script src="~/js/bootstrap-treeview.js"></script>
+    <script src="~/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
     <script src="~/FormScripts/Product.js"></script>
 
 }

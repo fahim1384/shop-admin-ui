@@ -249,7 +249,7 @@ const GetProductParamList = () => {
 const GetSellerList = () => {
 
 
-    let html = ``;
+    let html = ` <option value="-1">انتخاب کنید</option>`;
 
     jQuery.ajax({
         type: "Get",
@@ -287,7 +287,7 @@ const GetSellerList = () => {
 const GetProductStatusList = () => {
 
 
-    let html = ``;
+    let html = ` <option value="-1">انتخاب کنید</option>`;
 
     jQuery.ajax({
         type: "Get",
@@ -360,14 +360,14 @@ const InsertProduct = () => {
         coding: null,
         Price: parseInt($("#txtprice").val()),
         producePrice: 0,
-        finalStatusId: null,
+        FinalStatusId: parseInt($("#cmbStatus").val()),
         FirstCount: parseInt($("#txtcount").val()),
         Count: parseInt($("#txtcount").val()),
         coverImageUrl: "",
         coverImageHurl: null,
         seenCount: null,
         lastSeenDate: null,
-        description: null,
+        Description: $('#txtdesc').val(),
         aparatUrl: null,
         Weight: parseFloat($("#txtweight").val()),
         produceDuration: null,
@@ -420,14 +420,14 @@ const InsertProduct = () => {
 
             EndLoader();
 
-            $('#ImageModal').modal('hide');
+
             Swal.fire(
                 'ثبت شد !',
                 'محصول با موفقیت ثبت شد',
                 'success'
             );
 
-
+            setTimeout(function () { window.location.reload(); });
 
 
         },
@@ -450,6 +450,40 @@ const InsertProduct = () => {
         },
         complete: function () {
             GetPackingTypeList();
+        }
+    });
+
+}
+
+const DeleteProduct = () => {
+
+    ShowLoader();
+
+    jQuery.ajax({
+        type: "Delete",
+        url: SetUrl(`Product/DeleteProduct?productId=${Id}`),
+        data: "",
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        headers: { "Authorization": `Bearer ${GetToken()}` },
+        dataType: "text",
+        success: function (response) {
+            Swal.fire(
+                'ثبت شد !',
+                'محصول با موفقیت حذف شد',
+                'success'
+            );
+            GetProductList();
+
+        },
+        error: function (response) {
+
+            console.log(response);
+
+        },
+        complete: function () {
+            EndLoader();
+
         }
     });
 
@@ -677,6 +711,21 @@ $(document).ready(() => {
     GetCatProductList();
     EndLoader();
 
+    $('#txtdesc').wysihtml5({
+        toolbar: {
+            "font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
+            "emphasis": true, //Italics, bold, etc. Default true
+            "lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+            "html": false, //Button which allows you to edit the generated HTML. Default false
+            "link": true, //Button to insert a link. Default true
+            "image": true, //Button to insert an image. Default true,
+            "color": false, //Button to change color of font  
+            "blockquote": true, //Blockquote  
+            "size": "sm", //default: none, other options are xs, sm, lg
+            "fa": true
+        }
+    });
+
     $('#treeview1').on('nodeSelected', function (event, data) {
 
         let node = $('#treeview1').treeview('getSelected');
@@ -750,18 +799,32 @@ $(document).ready(() => {
 
         let textalert = "";
 
-        //if ($('#txtName').val().length === 0) {
-        //    textalert += `عنوان را وارد نمایید`;
-        //}
-        //else if ($('#txtCode').val().length === 0) {
-        //    textalert += `کد رنگ را وارد نمایید !`;
-        //    Swal.fire({
-        //        icon: 'error',
-        //        title: 'فیلدهای اجباری را وارد نمایید !',
-        //        text: textalert
+        let node = $('#treeview1').treeview('getSelected');
+        if (node.length == 0) {
+            textalert += `دسته بندی را وارد نمایید`;
+        }
+        else if ($('#txtname').val().length == 0) {
+            textalert += `عنوان را وارد نمایید`;
+        }
+        else if ($('#cmbSeller').val() == -1) {
+            textalert += `فروشنده را انتخاب نمایید !`;
+        }
+        else if ($('#cmbStatus').val() == -1) {
+            textalert += `وضعیت کالا را انتخاب نمایید`;
+        }
+        else if ($('#txtprice').val().length == 0) {
+            textalert += `قیمت را وارد نمایید`;
+        }
+        else if ($('#txtcount').val().length == 0) {
+            textalert += `تعداد را وارد نمایید`;
+        }
+        else if ($('#txtweight').val().length == 0) {
+            textalert += `وزن را وارد نمایید`;
+        }
+        else if ($("#exampleInputFile").val() === "") {
+            textalert += `تصویر کاور را انتخاب نمایید`;
+        }
 
-        //    });
-        //}
 
 
         if (textalert !== "") {
@@ -903,6 +966,28 @@ $(document).ready(() => {
 
         $("#ImagePanel").hide();
         $("#PanelList").show();
+
+    });
+
+    $(document.body).on('click', '.Trash', function () {
+
+        Id = parseInt($(this).attr('productId'));
+
+        Swal.fire({
+            title: 'آیا اطمینان دارید؟',
+            text: "بعد از حذف امکان بازگردانی وجود ندارد!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'خیر',
+            confirmButtonText: 'بله !'
+        }).then((result) => {
+            if (result.value) {
+                DeleteProduct();
+            }
+        });
+
 
     });
 
