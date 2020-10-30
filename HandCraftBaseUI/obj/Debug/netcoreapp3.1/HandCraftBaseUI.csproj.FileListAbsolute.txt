@@ -809,3 +809,12 @@ C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\n
 C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\FamousComments.cshtml.g.cs
 C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\Parameters.cshtml.g.cs
 C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\SliderPlace.cshtml.g.cs
+C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\bin\Debug\netcoreapp3.1\refs\Microsoft.Win32.Registry.dll
+C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\bin\Debug\netcoreapp3.1\refs\System.Diagnostics.EventLog.dll
+C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\bin\Debug\netcoreapp3.1\refs\System.IO.Pipelines.dll
+C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\bin\Debug\netcoreapp3.1\refs\System.Security.AccessControl.dll
+C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\bin\Debug\netcoreapp3.1\refs\System.Security.Cryptography.Cng.dll
+C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\bin\Debug\netcoreapp3.1\refs\System.Security.Cryptography.Xml.dll
+C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\bin\Debug\netcoreapp3.1\refs\System.Security.Permissions.dll
+C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\bin\Debug\netcoreapp3.1\refs\System.Security.Principal.Windows.dll
+C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\bin\Debug\netcoreapp3.1\refs\System.Windows.Extensions.dll

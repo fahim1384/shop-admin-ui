@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "L0qd21obQ0+hXFMmTg+9n1dnVLV2/I5coc/ISyEjnB1vTPBB7yLBNasJWz+koQmy8UjakuPZOE9jSJ3xnEMW/g==",
+  "dgSpecHash": "h+czY+LYfo7IPDqKff+eRBgyMW9VBtK6d010LhGL8Epsh0ypw3OpBl6QZhCt0JfrBLgK2qNymSkw5VkqezmEsg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Sahand\\source\\repos\\fahim1384\\shop-admin-ui\\HandCraftBaseUI\\HandCraftBaseUI.csproj",
   "expectedPackageFiles": [
@@ -168,8 +168,7 @@
     "C:\\Users\\Sahand\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.3\\system.threading.tasks.extensions.4.5.3.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Sahand\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

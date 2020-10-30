@@ -2,6 +2,7 @@
 
 let Id = 0;
 let Flag = 0;
+let main = 0;
 
 
 const GetParametersList = () => {
@@ -46,8 +47,18 @@ const InserParameters = () => {
         ID: 0,
         Pid: Id,
         Name: $('#txtName').val(),
-        Rkey: parseInt($('#txtRkey').val()),
+        Rkey: parseInt($('#txtRkey').val())
 
+    }
+    if (main == 1) {
+
+        parameters = {
+            ID: 0,
+            Pid: null,
+            Name: $('#txtName').val(),
+            Rkey: parseInt($('#txtRkey').val())
+
+        }
     }
 
     ShowLoader();
@@ -68,7 +79,7 @@ const InserParameters = () => {
                 'پارامتر با موفقیت ثبت شد',
                 'success'
             );
-            GetParametersList();
+            setTimeout(function () { window.location.reload(); }, 1000);
 
 
         },
@@ -134,6 +145,7 @@ const UpdateParameters = () => {
 
     }
 
+
     jQuery.ajax({
         type: "Put",
         url: SetUrl("Parameters/UpdateParameters"),
@@ -145,14 +157,14 @@ const UpdateParameters = () => {
         success: function (response) {
             EndLoader();
             $('#exampleModal').modal("hide");
-            GetParametersList();
+           
             Swal.fire(
                 'ثبت شد !',
                 'پارامتر با موفقیت بروز رسانی شد',
                 'success'
             );
-      
 
+            setTimeout(function () { window.location.reload(); }, 1000);
 
 
         },
@@ -191,7 +203,7 @@ const DeleteParameters = () => {
                 'پارامتر با موفقیت حذف شد',
                 'success'
             );
-            GetParametersList();
+            setTimeout(function () { window.location.reload(); }, 1000);
         },
         error: function (response) {
 
@@ -226,11 +238,13 @@ $(document).ready(() => {
             Id = node[0].mid;
             $('#lblMenuName').html(node[0].text);
             $('.selectedmenu').show();
+            $('.nonselectedmenu').hide();
         } else {
 
             Id = 0;
             $('#lblMenuName').html('');
             $('.selectedmenu').hide();
+            $('.nonselectedmenu').show();
         }
 
     });
@@ -240,6 +254,7 @@ $(document).ready(() => {
         Id = 0;
         $('#lblMenuName').html('');
         $('.selectedmenu').hide();
+        $('.nonselectedmenu').show();
 
 
     });
@@ -250,6 +265,15 @@ $(document).ready(() => {
         $('#txtRkey').val('');
         $('#exampleModal').modal();
         Flag = 0;
+        main = 0;
+
+    });
+
+    $(document.body).on('click', '#btnAddMain', function () {
+
+        $('#exampleModal').modal();
+        Flag = 0;
+        main = 1;
 
     });
 
