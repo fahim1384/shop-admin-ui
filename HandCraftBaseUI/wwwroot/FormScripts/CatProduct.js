@@ -48,8 +48,8 @@ function InserCatProduct() {
         Name: $('#txtName').val(),
         Coding: parseInt($('#txtCodding').val()),
         Rkey: parseInt($('#txtRkey').val()),
-        Icon:'',
-        Url: $('#txtURL').val()
+        Icon: '',
+        Url: ''
 
     }
     if (main == 1) {
@@ -61,17 +61,19 @@ function InserCatProduct() {
             Coding: parseInt($('#txtCodding').val()),
             Rkey: parseInt($('#txtRkey').val()),
             Icon: '',
-            Url: $('#txtURL').val()
+            Url: '',
 
         }
     }
     var myfile = $("#exampleInputFile");
-
+    let coverFile = $("#exampleInputFile1");
     var formData = new FormData();
 
 
     formData.append('Icon', myfile[0].files[0]);
+    formData.append('CoverImage', coverFile[0].files[0]);
     formData.append('catProduct', JSON.stringify(catProduct));
+
 
     ShowLoader();
 
@@ -92,7 +94,7 @@ function InserCatProduct() {
                 'success'
             );
             setTimeout(function () { window.location.reload(); }, 1000);
-            
+
         },
         error: function (response) {
 
@@ -117,7 +119,7 @@ function GetCatProductById() {
 
     jQuery.ajax({
         type: "Get",
-        url:SetUrl(`CatProduct/GetCatProductById?catProductId=${Id}`),
+        url: SetUrl(`CatProduct/GetCatProductById?catProductId=${Id}`),
         data: "",
         async: false,
         contentType: "application/json; charset=utf-8",
@@ -158,21 +160,23 @@ function UpdateCatProduct() {
         Name: $('#txtName').val(),
         Coding: parseInt($('#txtCodding').val()),
         Rkey: parseInt($('#txtRkey').val()),
-        Icon: $('#txtIcon').val(),
-        Url: $('#txtURL').val()
+        Icon: '',
+        Url: ''
 
     }
 
     var myfile = $("#exampleInputFile");
+    let coverFile = $("#exampleInputFile1");
     var formData = new FormData();
 
 
     formData.append('Icon', myfile[0].files[0]);
+    formData.append('CoverImage', coverFile[0].files[0]);
     formData.append('catProduct', JSON.stringify(catProduct));
 
     jQuery.ajax({
         type: "Put",
-        url:SetUrl("CatProduct/UpdateCatProduct"),
+        url: SetUrl("CatProduct/UpdateCatProduct"),
         data: formData,
         contentType: false,
         processData: false,
@@ -312,9 +316,9 @@ const GetCatProductParametersTreeByCatId = () => {
                 }
             });
             GetCatProductParametersByCatId();
-            
 
-            
+
+
 
         },
         error: function (response) {
@@ -405,6 +409,11 @@ $(document).ready(() => {
 
     $(document.body).on('click', '#btnAdd', function () {
 
+        $('#txtName').val('');
+        $('#txtCodding').val('');
+        $('#txtRkey').val('');
+        $('#exampleInputFilelbl').text('انتخاب تصویر');
+        $('#exampleInputFile1lbl').text('انتخاب تصویر');
         $('#exampleModal').modal();
         Flag = 0;
         main = 0;
@@ -413,6 +422,11 @@ $(document).ready(() => {
 
     $(document.body).on('click', '#btnAddMain', function () {
 
+        $('#txtName').val('');
+        $('#txtCodding').val('');
+        $('#txtRkey').val('');
+        $('#exampleInputFilelbl').text('انتخاب تصویر');
+        $('#exampleInputFile1lbl').text('انتخاب تصویر');
         $('#exampleModal').modal();
         Flag = 0;
         main = 1;
@@ -432,9 +446,7 @@ $(document).ready(() => {
         else if ($('#txtName').val().length === 0) {
             textalert += `Rkey دسته را وارد نمایید`;
         }
-        else if ($('#txtURL').val().length === 0) {
-            textalert += "URL را وارد نمایید";
-        }
+
 
         if (textalert !== "") {
 
@@ -479,6 +491,11 @@ $(document).ready(() => {
 
     $(document.body).on('click', '#btnEdit', function () {
 
+        $('#txtName').val('');
+        $('#txtCodding').val('');
+        $('#txtRkey').val('');
+        $('#exampleInputFilelbl').text('انتخاب تصویر');
+        $('#exampleInputFile1lbl').text('انتخاب تصویر');
         Flag = 1;
         GetCatProductById();
 
@@ -508,19 +525,33 @@ $(document).ready(() => {
 
 
         if ($(this).val() == '') {
-            $('.custom-file-label').text('انتخاب تصویر');
+            $('#exampleInputFilelbl').text('انتخاب تصویر');
         }
         else {
             var myfile = $("#exampleInputFile");
 
-            $('.custom-file-label').text(myfile[0].files[0].name);
+            $('#exampleInputFilelbl').text(myfile[0].files[0].name);
 
         }
 
 
     });
 
+    $(document.body).on('change', '#exampleInputFile1', function () {
 
+
+        if ($(this).val() == '') {
+            $('#exampleInputFile1lbl').text('انتخاب تصویر');
+        }
+        else {
+            var myfile = $("#exampleInputFile1");
+
+            $('#exampleInputFile1lbl').text(myfile[0].files[0].name);
+
+        }
+
+
+    });
 
 
 });
