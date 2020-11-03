@@ -1,8 +1,6 @@
 ﻿<!DOCTYPE html>
 @{
-    //var firstname = User.Claims.Where(c => c.Type == "firstname").Select(x => x.Value).SingleOrDefault();
-    //var lastname = User.Claims.Where(c => c.Type == "lastname").Select(x => x.Value).SingleOrDefault();
-    //var name = firstname + " " + lastname;
+
 }
 <html>
 <head>
@@ -65,7 +63,7 @@
     <script src="~/plugins/select2/select2.js"></script>
     <link href="~/plugins/iCheck/all.css" rel="stylesheet" />
     <script src="~/plugins/iCheck/icheck.js"></script>
-    <script src="~/js/Site.js"></script>
+    <script src="~/Seller/FormScripts/Site.js"></script>
 
 
     <div class="wrapper">
@@ -107,7 +105,7 @@
                      alt="AdminLTE Logo"
                      class="brand-image  elevation-3"
                      style="opacity: .8" />
-                <span class="brand-text font-weight-light">پنل مدیریت</span>
+                <span class="brand-text font-weight-light">پنل صنعتگر</span>
             </a>
 
             <!-- Sidebar -->
@@ -121,7 +119,7 @@
                                  alt="User Image" />
                         </div>
                         <div class="info">
-                            @*<a href="#" class="d-block">@name</a>*@
+                       
                         </div>
                     </div>
 
@@ -132,72 +130,18 @@
                             role="menu"
                             data-accordion="false">
 
-                            <li class="nav-item has-treeview">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon fa fa-table"></i>
-                                    <p>
-                                        محصولات
-                                        <i class="fa fa-angle-left right"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview" style="display: none;">
-                                    <li class="nav-item">
-                                        <a asp-controller="Home" asp-action="CatProduct" class="nav-link">
-                                            <i class="nav-icon fa fa-sitemap"></i>
-                                            <p>دسته بندی محصولات</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a asp-controller="Home" asp-action="Color" class="nav-link">
-                                            <i class="nav-icon fa fa-paint-brush"></i>
-                                            <p>رنگ محصولات</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a asp-controller="Home" asp-action="Packingtype" class="nav-link">
-                                            <i class="nav-icon fa fa-gift"></i>
-                                            <p>بسته بندی محصولات</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a asp-controller="Home" asp-action="Parameters" class="nav-link">
-                                            <i class="nav-icon fa fa-list-ul"></i>
-                                            <p>پارامترها</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a asp-controller="Home" asp-action="Product" class="nav-link">
-                                            <i class="nav-icon fa fa-cubes"></i>
-                                            <p> محصولات</p>
-                                        </a>
-                                    </li>
-
-                                </ul>
-                            </li>
 
                             <li class="nav-item">
-                                <a asp-controller="Home" asp-action="CustomerOrder" class="nav-link">
+                                <a href="/seller/home/product"  class="nav-link">
                                     <i class="nav-icon fa fa-shopping-bag"></i>
-                                    <p> سفارشات </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a asp-controller="Home" asp-action="FamousComments" class="nav-link">
-                                    <i class="nav-icon fa fa-comments"></i>
-                                    <p> نظرات فاخر</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a asp-controller="Home" asp-action="SliderPlace" class="nav-link">
-                                    <i class="nav-icon fa fa-television"></i>
-                                    <p> محل اسلایدر</p>
+                                    <p> محصولات </p>
                                 </a>
                             </li>
 
 
                             <li class="nav-item">
 
-                                <a onclick="localStorage.clear(); window.location = '/Account/Login';" class="nav-link" style="cursor:pointer">
+                                <a onclick="localStorage.clear(); window.location = '/Seller/Account/Login';" class="nav-link" style="cursor:pointer">
                                     <i class="nav-icon fa fa-sign-out"></i>
                                     <p>خروج از پنل</p>
                                 </a>
@@ -205,9 +149,6 @@
                             </li>
 
                         </ul>
-                        @*<form asp-area="" asp-controller="Account" asp-action="Logout" style="display: none;">
-                                <button id="logout" type="submit" style="display: none;"></button>
-                            </form>*@
                     </nav>
                     <!-- /.sidebar-menu -->
                 </div>
@@ -268,17 +209,17 @@
     <script>
 
         const CheckIsLogin = () => {
+        debugger 
+            if (localStorage.getItem("SellerTokens") === null || localStorage.getItem("SellerTokens") === "[]") {
 
-            if (localStorage.getItem("Tokens") === null || localStorage.getItem("Tokens") === "[]") {
-
-                window.location = "/Account/Login";
+                window.location = "/Seller/Account/Login";
             }
 
         }
 
         $(document).ready(function () {
 
-            CheckIsLogin();
+          CheckIsLogin();
 
         });
 

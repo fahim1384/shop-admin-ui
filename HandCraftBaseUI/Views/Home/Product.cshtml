@@ -273,6 +273,68 @@
     </div>
 </div>
 
+<div class="card card-success" style="display: none;" id="OfferPanel">
+    <div class="card-header">
+        <h3 class="card-title">تخفیفات</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card card-light">
+                    <div class="card-header">
+                        <h3 class="card-title">ثبت فایل جدید</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="txtOnvanTasvir" class="control-label">نوع فایل:</label>
+                            <select class="form-control" id="CmbFileType">
+                                <option value="1">تصویر</option>
+                                <option value="2">فیلم</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtOnvanTasvir" class="control-label">عنوان فایل:</label>
+                            <input type="text" class="form-control" id="txtOnvanTasvir" placeholder="عنوان فایل" />
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputFile">انتخاب فایل</label>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="SmallInputFile">
+                                    <label class="custom-file-label btn btn-info" for="SmallInputFile">انتخاب فایل</label>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="button" id="btnSabtImage" class="btn btn-success w-25"><i class="fa fa-check"></i>&nbsp; ثبت</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="card card-light">
+                    <div class="card-header">
+                        <h3 class="card-title">فایل ها</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body row" id="FileDiv">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer text-center">
+
+        <button type="button" class="btn btn-warning w-25" id="btnBazgashtImage"><i class="fa fa-remove"></i>&nbsp; انصراف</button>
+    </div>
+</div>
+
 
 
 

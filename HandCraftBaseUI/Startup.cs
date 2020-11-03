@@ -81,10 +81,18 @@ namespace HandCraftBaseUI
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Account}/{action=login}/{id?}");
+                //endpoints.MapAreaControllerRoute(
+                //    "Seller",
+                //    "Seller",
+                //    "Seller/{controller=Account}/{action=login}/{id?}");
+                endpoints.MapAreaControllerRoute(name: "areas", "seller", pattern: "{area:exists}/{controller=Account}/{action=login}/{id?}");
+                endpoints.MapRazorPages();
             });
+           
         }
     }
 }

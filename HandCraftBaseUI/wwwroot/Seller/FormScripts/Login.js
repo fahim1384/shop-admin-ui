@@ -13,7 +13,7 @@ const Login = () => {
 
     jQuery.ajax({
         type: "Post",
-        url: SetUrl("Account/Login"),
+        url: SetUrl("Account/SellerLogin"),
         data: JSON.stringify(s),
         async: false,
         contentType: "application/json; charset=utf-8",
@@ -24,7 +24,7 @@ const Login = () => {
             EndLoader();
 
 
-            window.location = "/Home/Index";
+            window.location = "/seller/home/index";
 
         },
         error: (response) => {
@@ -32,8 +32,8 @@ const Login = () => {
             if (response.responseText === "Invalid credentials") {
 
                 Swal.fire({
-                    icon: 'error',
-                    title: 'خطا در ورود به سیستم !',
+                    icon: "error",
+                    title: "خطا در ورود به سیستم !",
                     text: `نام کاربری یا کلمه عبور صحیح نمی باشد`
 
                 });

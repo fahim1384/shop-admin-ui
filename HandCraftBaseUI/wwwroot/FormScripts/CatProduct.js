@@ -154,25 +154,25 @@ function UpdateCatProduct() {
 
     ShowLoader();
 
-    let catProduct = {
+    const catProduct = {
         Id: Id,
         Pid: null,
-        Name: $('#txtName').val(),
-        Coding: parseInt($('#txtCodding').val()),
-        Rkey: parseInt($('#txtRkey').val()),
-        Icon: '',
-        Url: ''
+        Name: $("#txtName").val(),
+        Coding: parseInt($("#txtCodding").val()),
+        Rkey: parseInt($("#txtRkey").val()),
+        Icon: "",
+        Url: ""
 
-    }
+    };
 
-    var myfile = $("#exampleInputFile");
-    let coverFile = $("#exampleInputFile1");
-    var formData = new FormData();
+    const myfile = $("#exampleInputFile");
+    const coverFile = $("#exampleInputFile1");
+    const formData = new FormData();
 
 
-    formData.append('Icon', myfile[0].files[0]);
-    formData.append('CoverImage', coverFile[0].files[0]);
-    formData.append('catProduct', JSON.stringify(catProduct));
+    formData.append("Icon", myfile[0].files[0]);
+    formData.append("CoverImage", coverFile[0].files[0]);
+    formData.append("catProduct", JSON.stringify(catProduct));
 
     jQuery.ajax({
         type: "Put",

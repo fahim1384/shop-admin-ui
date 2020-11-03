@@ -14,13 +14,13 @@ const SetToken = (token) => {
     var list = [];
     var token = { t: token };
     list.push(token);
-    localStorage.setItem("Tokens", JSON.stringify(list));
+    localStorage.setItem("SellerTokens", JSON.stringify(list));
 
 }
 
 const GetToken = () => {
 
-    var stored = JSON.parse(localStorage.getItem("Tokens"));
+    var stored = JSON.parse(localStorage.getItem("SellerTokens"));
     if (stored === "[]") {
         return "No Token";
     } else {
@@ -31,7 +31,7 @@ const GetToken = () => {
 
 const SetUrl = (url) => {
 
-    // var host = `https://localhost:44366/api/${url}`;
+   // var host = `https://localhost:44366/api/${url}`;
     var host = `https://service.tabrizhandicrafts.com/api/${url}`;
     return host;
 }

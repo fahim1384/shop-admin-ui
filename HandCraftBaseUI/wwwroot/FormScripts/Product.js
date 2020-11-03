@@ -6,7 +6,7 @@ let catProductId = 0;
 const GetProductList = () => {
 
 
-    let Html = `<table id="example2" class="table table-striped table-bordered table-hover">
+    let html = `<table id="example2" class="table table-striped table-bordered table-hover">
                <thead>
                   <tr>
                     <th>ردیف</th>
@@ -41,7 +41,7 @@ const GetProductList = () => {
 
                 cmbrelevent += ` <option value="${item.id}">${item.name}</option>`;
 
-                Html += `<tr>
+                html += `<tr>
                             <td>${i + 1}</td>
                             <td>${item.name}</td>
                             <td>${item.catProductName}</td>
@@ -58,9 +58,9 @@ const GetProductList = () => {
                        </tr>`;
             });
 
-            Html += `</tbody></table>`;
+            html += `</tbody></table>`;
 
-            $('.TblList').html(Html);
+            $('.TblList').html(html);
             $('#cmbrelevent').html(cmbrelevent);
             $('#cmbrelevent').select2();
 

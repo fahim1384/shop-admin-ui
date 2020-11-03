@@ -63,8 +63,12 @@ namespace HandCraftBaseUI.Controllers
 
             return View();
         }
+        public IActionResult CustomerOrder()
+        {
 
-   
+            return View();
+        }
+
 
 
     }
