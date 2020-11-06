@@ -18,5 +18,10 @@ namespace HandCraftBaseUI.Areas.Seller.Controllers
         {
             return View();
         }
+
+        public IActionResult Orders()
+        {
+            return View();
+        }
     }
 }

@@ -43,154 +43,148 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
+
         <div class="row">
-            <div class="col-md-3">
-                <div class="card card-light">
-                    <div class="card-header">
-                        <h3 class="card-title">دسته بندی محصول</h3>
+            <div class="col-md-3 form-group">
+                <label>دسته بندی کالا :</label>
+                <select id="cmbCatProduct" dir="rtl" class="js-example-basic-single w-100 form-control" name="state">
+                    <option value="-1">انتخاب کنید</option>
+                </select>
+            </div>
+            <div class="col-md-3 form-group">
+                <label>نام :</label>
+                <input id="txtname" type="text" class="form-control" placeholder="نام">
+            </div>
+            <div class="col-md-3 form-group">
+                <br />
+                <input id="virtualCheck" type="checkbox">&nbsp;&nbsp;<label for="virtualCheck">محصول مجازی </label>
+            </div>
+            <div class="col-md-3 form-group" id="divVirtual" style="display: none;">
+                <label for="mellicode">لینک دانلود </label>
+                <div class="input-group">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="VirtualInputFile">
+                        <label class="custom-file-label btn btn-info" id="VirtualInputFilelbl" for="VirtualInputFile">انتخاب فایل</label>
                     </div>
-                    <!-- /.card-header -->
-                    <div class="card-body">
 
-                        <hr />
-                        <div class="row">
-                            <div class="selectedmenu" style="display: none;">
-                                <strong>دسته انتخابی :</strong>
-                                <p id="lblMenuName"></p><br />
-                            </div>
-                            <div id="treeview1" class="w-100"></div>
-
-                        </div>
-                    </div>
-                    <!-- /.card-body -->
                 </div>
             </div>
-            <div class="col-md-9">
-                <div class="card card-light">
-                    <div class="card-header">
-                        <h3 class="card-title"> مشخصات محصول</h3>
+            <div class="col-md-3 form-group" id="divSeller">
+                <label>فروشنده :</label>
+                <select id="cmbSeller" dir="rtl" class="js-example-basic-single w-100 form-control" name="state">
+                    <option value="-1">انتخاب کنید</option>
+                </select>
+            </div>
+
+            <div class="col-md-3 form-group">
+                <label>وضعیت کالا :</label>
+                <select id="cmbStatus" dir="rtl" class="js-example-basic-single w-100 form-control" name="state">
+                    <option value="-1">انتخاب کنید</option>
+                </select>
+            </div>
+            <div class="col-md-3 form-group">
+
+                <label>پیش کد محصول :</label>
+                <input id="txtCodding" type="text" class="form-control" readonly disabled>
+            </div>
+            <div class="col-md-3 form-group">
+                <label>قیمت :</label>
+                <input id="txtprice" type="number" class="form-control" placeholder="قیمت">
+            </div>
+            <div class="col-md-3 form-group">
+                <label>تعداد اولیه :</label>
+                <input id="txtcount" type="number" class="form-control" placeholder="تعداد اولیه">
+            </div>
+            <div class="col-md-3 form-group">
+                <label>وزن :</label>
+                <input id="txtweight" type="number" class="form-control" placeholder="وزن">
+            </div>
+            <div class="col-md-3 form-group">
+                <label>زمان آماده سازی سفارش:</label>
+                <input id="txtOrderDuration" type="number" class="form-control" placeholder="زمان آماده سازی سفارش">
+            </div>
+            <div class="col-md-3 form-group">
+                <input id="mellicode" type="checkbox" checked>&nbsp;&nbsp;<label for="mellicode">شناسه ملی </label>
+                <input id="txtmellicode" type="text" class="form-control" placeholder="شناسه ملی">
+            </div>
+            <div class="col-md-3 form-group">
+                <input id="unesco" type="checkbox" checked>&nbsp;&nbsp;<label for="unesco">شناسه یونسکو</label>
+                <input id="txtunescocode" type="text" class="form-control" placeholder="شناسه یونسکو">
+
+            </div>
+            <div class="col-md-3 form-group">
+                <label for="txtMetaData" class="control-label">عنوان متا دیتا:</label>
+                <input type="text" class="form-control" id="txtMetaData" placeholder="عنوان متا دیتا" />
+
+            </div>
+
+            <div class="col-md-12  form-group">
+                <label for="txtMetadesc" class="control-label">توضیحات متا دیتا:</label>
+                <textarea dir="rtl" rows="5" class="form-control" id="txtMetadesc"></textarea>
+
+            </div>
+
+            <div class="col-md-12 form-group">
+                <label>کلمات کلیدی(با "،" جدا شوند) :</label>
+                <input id="txtkeyword" type="text" class="form-control" placeholder="کلمه کلیدی">
+            </div>
+            <div class="col-md-4 form-group">
+                <label for="exampleInputFile">تصویر کاور :</label>
+                <div class="input-group">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label btn btn-info" for="exampleInputFile">انتخاب تصویر</label>
                     </div>
-                    <!-- /.card-header -->
-                    <div class="card-body">
 
-                        <div class="row">
-                            <div class="col-md-4 form-group">
-                                <label>نام :</label>
-                                <input id="txtname" type="text" class="form-control" placeholder="نام">
-                            </div>
-                            <div class="col-md-4 form-group">
-                                <label>فروشنده :</label>
-                                <select id="cmbSeller" dir="rtl" class="js-example-basic-single w-100 form-control" name="state">
-                                    <option value="-1">انتخاب کنید</option>
-                                </select>
-                            </div>
+                </div>
+            </div>
 
-                            <div class="col-md-4 form-group">
-                                <label>وضعیت کالا :</label>
-                                <select id="cmbStatus" dir="rtl" class="js-example-basic-single w-100 form-control" name="state">
-                                    <option value="-1">انتخاب کنید</option>
-                                </select>
-                            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label>محصولات مرتبط :</label>
+                <select id="cmbrelevent" dir="rtl" class="js-example-basic-multiple w-100" name="states[]" multiple="multiple">
+                </select>
+            </div>
 
-                            <div class="col-md-4 form-group">
-                                <label>قیمت :</label>
-                                <input id="txtprice" type="number" class="form-control" placeholder="قیمت">
-                            </div>
-                            <div class="col-md-4 form-group">
-                                <label>تعداد اولیه :</label>
-                                <input id="txtcount" type="number" class="form-control" placeholder="تعداد اولیه">
-                            </div>
-                            <div class="col-md-4 form-group">
-                                <label>وزن :</label>
-                                <input id="txtweight" type="number" class="form-control" placeholder="وزن">
-                            </div>
-                            <div class="col-md-4 form-group">
-                                <input id="mellicode" type="checkbox" checked>&nbsp;&nbsp;<label for="mellicode">شناسه ملی </label>
-                                <input id="txtmellicode" type="text" class="form-control" placeholder="شناسه ملی">
-                            </div>
-                            <div class="col-md-4 form-group">
-                                <input id="unesco" type="checkbox" checked>&nbsp;&nbsp;<label for="unesco">شناسه یونسکو</label>
-                                <input id="txtunescocode" type="text" class="form-control" placeholder="شناسه یونسکو">
-
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <label>کلمات کلیدی(با "،" جدا شوند) :</label>
-                                <input id="txtkeyword" type="text" class="form-control" placeholder="کلمه کلیدی">
-                            </div>
-                            <div class="col-md-4 form-group">
-                                <label for="exampleInputFile">تصویر کاور :</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                                        <label class="custom-file-label btn btn-info" for="exampleInputFile">انتخاب تصویر</label>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <label>متادیتا :</label>
-                                <input id="txtMetaData" type="text" class="form-control" placeholder="متادیتا">
-                            </div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                                <label>رنگ ها :</label>
-                                <select id="cmbColor" dir="rtl" class="js-example-basic-multiple w-100" name="states[]" multiple="multiple">
-                                </select>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>نوع بسته بندی :</label>
-                                <select id="cmbPacking" dir="rtl" class="js-example-basic-multiple w-100" name="states[]" multiple="multiple">
-                                </select>
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <label>محصولات مرتبط :</label>
-                                <select id="cmbrelevent" dir="rtl" class="js-example-basic-multiple w-100" name="states[]" multiple="multiple">
-                                </select>
-                            </div>
-
-                        </div>
-                        <div class="row">
-                            <div class="card card-light form-control">
-                                <div class="card-header">
-                                    <h3 class="card-title">توضیحات</h3>
-                                </div>
-                                <!-- /.card-header -->
-                                <div class="card-body">
-                                    <textarea dir="rtl" class="form-control" id="txtdesc"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="card card-light form-control">
-                                <div class="card-header">
-                                    <h3 class="card-title">نقد و بررسی</h3>
-                                </div>
-                                <!-- /.card-header -->
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-4 form-group">
-                                            <label>نویسنده :</label>
-                                            <input id="txtAuthor" type="text" class="form-control" placeholder="نویسنده">
-                                        </div>
-                                    </div>
-                                    <textarea dir="rtl" class="form-control" id="txtCompareDescription "></textarea>
-                                </div>
-                            </div>
+        </div>
+        <div class="row">
+            <div class="card card-light form-control">
+                <div class="card-header">
+                    <h3 class="card-title">توضیحات</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <textarea dir="rtl" class="form-control editor" id="txtdesc"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="card card-light form-control">
+                <div class="card-header">
+                    <h3 class="card-title">نقد و بررسی</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            <label>نویسنده :</label>
+                            <input id="txtAuthor" type="text" class="form-control" placeholder="نویسنده">
                         </div>
                     </div>
-                    <!-- /.card-body -->
+                    <textarea dir="rtl" class="form-control editor" id="txtCompareDescription"></textarea>
                 </div>
             </div>
         </div>
 
-        <div class="card-footer text-center">
-            <button type="button" id="btnSabt" class="btn btn-success w-25"><i class="fa fa-check"></i>&nbsp; ثبت</button>
-            <button type="button" class="btn btn-warning w-25" id="btnBazgasht"><i class="fa fa-remove"></i>&nbsp; انصراف</button>
-        </div>
+        <!-- /.card-body -->
     </div>
-    <!-- /.card-body -->
+
+
+    <div class="card-footer text-center">
+        <button type="button" id="btnSabt" class="btn btn-success w-25"><i class="fa fa-check"></i>&nbsp; ثبت</button>
+        <button type="button" class="btn btn-warning w-25" id="btnBazgasht"><i class="fa fa-remove"></i>&nbsp; انصراف</button>
+    </div>
 </div>
 
 <div class="card card-warning" style="display: none;" id="ParamPanel">
@@ -335,6 +329,186 @@
     </div>
 </div>
 
+<div class="card card-dark" style="display: none;" id="ColorPanel">
+    <div class="card-header">
+        <h3 class="card-title">رنگ ها</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card card-light">
+                    <div class="card-header">
+                        <h3 class="card-title">افزودن رنگ جدید</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="cmbColor" class="control-label">رنگ:</label>
+                            <select id="cmbColor" dir="rtl" class="js-example-basic-single w-100 form-control" name="state">
+                                <option value="-1">انتخاب کنید</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtColorPrice" class="control-label">قیمت:</label>
+                            <input type="number" class="form-control" id="txtColorPrice" placeholder="قیمت" />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtColorCount" class="control-label">تعداد:</label>
+                            <input type="number" class="form-control" id="txtColorCount" placeholder="تعداد" />
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="button" id="btnSabtColor" class="btn btn-success w-25"><i class="fa fa-check"></i>&nbsp; ثبت</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="card card-light">
+                    <div class="card-header">
+                        <h3 class="card-title">رنگ ها</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="row table table-responsive">
+                            <div class="w-100 TblColorList">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer text-center">
+
+        <button type="button" class="btn btn-warning w-25" id="btnBazgashtColor"><i class="fa fa-remove"></i>&nbsp; انصراف</button>
+    </div>
+</div>
+
+<div class="card card-dark" style="display: none;" id="PackingPanel">
+    <div class="card-header">
+        <h3 class="card-title">بسته بندی ها</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card card-light">
+                    <div class="card-header">
+                        <h3 class="card-title">افزودن بسته بندی جدید</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="cmbPacking" class="control-label">نوع بسته بندی:</label>
+                            <select id="cmbPacking" dir="rtl" class="js-example-basic-single w-100 form-control" name="state">
+                                <option value="-1">انتخاب کنید</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtPackingPrice" class="control-label">قیمت:</label>
+                            <input type="number" class="form-control" id="txtPackingPrice" placeholder="قیمت" />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtPackingWeight" class="control-label">وزن:</label>
+                            <input type="number" class="form-control" id="txtPackingWeight" placeholder="وزن" />
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="button" id="btnSabtPacking" class="btn btn-success w-25"><i class="fa fa-check"></i>&nbsp; ثبت</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="card card-light">
+                    <div class="card-header">
+                        <h3 class="card-title">نوع بسته بندی ها</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="row table table-responsive">
+                            <div class="w-100 TblPackingList">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer text-center">
+
+        <button type="button" class="btn btn-warning w-25" id="btnBazgashtPacking"><i class="fa fa-remove"></i>&nbsp; انصراف</button>
+    </div>
+</div>
+
+<div class="card card-dark" style="display: none;" id="PackingImageDiv">
+    <div class="card-header">
+        <h3 class="card-title">بسته بندی ها</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card card-light">
+                    <div class="card-header">
+                        <h3 class="card-title">افزودن تصویر جدید</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+
+                        <div class="form-group">
+                            <label for="txtPackingImageTitle" class="control-label">عنوان:</label>
+                            <input type="text" class="form-control" id="txtPackingImageTitle" placeholder="عنوان" />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtPackingImageDesc" class="control-label">توضیحات:</label>
+                            <textarea class="form-control" rows="3" id="txtPackingImageDesc" placeholder="توضیحات"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputFile">تصویر:</label>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="PackingImageInputFile">
+                                    <label class="custom-file-label btn btn-info" id="PackingImageInputFilelbl" for="PackingImageInputFile">انتخاب تصویر</label>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group text-center">
+                            <button type="button" id="btnSabtPackingImage" class="btn btn-success w-25"><i class="fa fa-check"></i>&nbsp; ثبت</button>
+                           </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="card card-light">
+                    <div class="card-header">
+                        <h3 class="card-title">تصاویر</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="row" id="packageImagelistss">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card-footer text-center">
+
+        <button type="button" class="btn btn-warning w-25" id="btnBazgashtPackingImage"><i class="fa fa-remove"></i>&nbsp; انصراف</button>
+    </div>
+</div>
 
 
 

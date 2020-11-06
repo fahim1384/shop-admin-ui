@@ -1,0 +1,40 @@
+﻿
+
+@{
+    ViewData["Title"] = "سفارشات";
+    Layout = "~/Views/Shared/_LayoutSeller.cshtml";
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">@ViewData["Title"]</h1>
+            </div>
+            <div class="col-sm-6"></div>
+        </div>
+    </div>
+</div>
+
+
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title">لیست محصولات</h3>
+    </div>
+    <div class="card-body">
+        <hr />
+        <div class="row table table-responsive">
+            <div class="w-100 TblList">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+
+    <script src="~/Seller/FormScripts/Order.js"></script>
+
+}
+

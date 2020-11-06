@@ -39,17 +39,20 @@ const GetCatProductList = () => {
     });
 }
 
-function InserCatProduct() {
+const InserCatProduct = () => {
 
 
     let catProduct = {
         Id: 0,
         Pid: Id,
-        Name: $('#txtName').val(),
-        Coding: parseInt($('#txtCodding').val()),
-        Rkey: parseInt($('#txtRkey').val()),
-        Icon: '',
-        Url: ''
+        Name: $("#txtName").val(),
+        Coding: parseInt($("#txtCodding").val()),
+        Rkey: parseInt($("#txtRkey").val()),
+        Icon: "",
+        Url: "",
+        KeyWords: $("#txtkeyword").val(),
+        MetaTitle: $("#txtMetaData").val(),
+        MetaDescription: $("#txtMetadesc").val()
 
     }
     if (main == 1) {
@@ -59,20 +62,25 @@ function InserCatProduct() {
             Pid: null,
             Name: $('#txtName').val(),
             Coding: parseInt($('#txtCodding').val()),
-            Rkey: parseInt($('#txtRkey').val()),
-            Icon: '',
-            Url: '',
+            Rkey: null,
+            Icon: "",
+            Url: "",
+            KeyWords: $("#txtkeyword").val(),
+            MetaTitle: $("#txtMetaData").val(),
+            MetaDescription: $("#txtMetadesc").val()
 
         }
     }
-    var myfile = $("#exampleInputFile");
-    let coverFile = $("#exampleInputFile1");
-    var formData = new FormData();
+    const myfile = $("#exampleInputFile");
+    const coverFile = $("#exampleInputFile1");
+    const miniPic = $("#exampleInputFile2");
+    const formData = new FormData();
 
 
-    formData.append('Icon', myfile[0].files[0]);
-    formData.append('CoverImage', coverFile[0].files[0]);
-    formData.append('catProduct', JSON.stringify(catProduct));
+    formData.append("Icon", myfile[0].files[0]);
+    formData.append("CoverImage", coverFile[0].files[0]);
+    formData.append("miniPic", miniPic[0].files[0]);
+    formData.append("catProduct", JSON.stringify(catProduct));
 
 
     ShowLoader();
@@ -113,7 +121,7 @@ function InserCatProduct() {
     });
 }
 
-function GetCatProductById() {
+const GetCatProductById = () => {
 
     ShowLoader();
 
@@ -128,12 +136,16 @@ function GetCatProductById() {
 
 
 
-            $('#txtName').val(response.name);
-            $('#txtCodding').val(response.coding);
-            $('#txtRkey').val(response.rkey);
-            $('#txtIcon').val(response.icon);
-            $('#txtURL').val(response.url);
-            $('#exampleModal').modal();
+            $("#txtName").val(response.name);
+            $("#txtCodding").val(response.coding);
+            $("#txtMetaData").val(response.metaTitle);
+            $("#txtMetadesc").val(response.metaDescription);
+            $("#txtkeyword").val(response.keyWords);
+            $("#imgIcon").attr("src", response.icon);
+            $("#imgCover").attr("src", response.url);
+            $("#imgMiniPic").attr("src", response.miniPicUrl);
+            $("#EditDiv").show();
+            $("#ListDiv").hide();
 
         },
         error: function (response) {
@@ -148,7 +160,7 @@ function GetCatProductById() {
     });
 }
 
-function UpdateCatProduct() {
+const UpdateCatProduct = () => {
 
 
 
@@ -159,19 +171,24 @@ function UpdateCatProduct() {
         Pid: null,
         Name: $("#txtName").val(),
         Coding: parseInt($("#txtCodding").val()),
-        Rkey: parseInt($("#txtRkey").val()),
+        Rkey: null,
         Icon: "",
-        Url: ""
+        Url: "",
+        KeyWords: $("#txtkeyword").val(),
+        MetaTitle: $("#txtMetaData").val(),
+        MetaDescription: $("#txtMetadesc").val()
 
     };
 
     const myfile = $("#exampleInputFile");
     const coverFile = $("#exampleInputFile1");
+    let miniPic = $("#exampleInputFile2");
     const formData = new FormData();
 
 
     formData.append("Icon", myfile[0].files[0]);
     formData.append("CoverImage", coverFile[0].files[0]);
+    formData.append('miniPic', miniPic[0].files[0]);
     formData.append("catProduct", JSON.stringify(catProduct));
 
     jQuery.ajax({
@@ -206,7 +223,7 @@ function UpdateCatProduct() {
     });
 }
 
-function DeleteCatProduct() {
+const DeleteCatProduct = () => {
 
     ShowLoader();
 
@@ -367,9 +384,21 @@ const GetCatProductParametersByCatId = () => {
     });
 }
 
+const search = (e) => {
+    var pattern = $('#input-search').val();
+    var options = {
+        ignoreCase: true,
+        exactMatch: false,
+        revealResults: false
+    };
+    var results = $('#treeview1').treeview('search', [pattern, options]);
 
-
-
+    var output = '<p>' + results.length + ' matches found</p>';
+    $.each(results, function (index, result) {
+        output += '<p>- ' + result.text + '</p>';
+    });
+    $('#search-output').html(output);
+}
 
 
 
@@ -380,7 +409,7 @@ $(document).ready(() => {
     GetCatProductList();
     EndLoader();
 
-    $('#treeview1').on('nodeSelected', function (event, data) {
+    $("#treeview1").on("nodeSelected", function (event, data) {
 
         let node = $('#treeview1').treeview('getSelected');
         if (node.length > 0) {
@@ -398,7 +427,7 @@ $(document).ready(() => {
 
     });
 
-    $('#treeview1').on('nodeUnselected', function (event, node) {
+    $("#treeview1").on("nodeUnselected", function (event, node) {
 
         Id = 0;
         $('.selectedmenu').hide();
@@ -407,46 +436,53 @@ $(document).ready(() => {
 
     });
 
-    $(document.body).on('click', '#btnAdd', function () {
+    $(document.body).on("click", "#btnAdd", function () {
 
         $('#txtName').val('');
         $('#txtCodding').val('');
-        $('#txtRkey').val('');
+        $('#txtMetaData').val('');
+        $('#txtMetadesc').val('');
         $('#exampleInputFilelbl').text('انتخاب تصویر');
         $('#exampleInputFile1lbl').text('انتخاب تصویر');
-        $('#exampleModal').modal();
+        $('#exampleInputFile2lbl').text('انتخاب تصویر');
+        $('#EditDiv').show();
+        $('#ListDiv').hide();
         Flag = 0;
         main = 0;
 
     });
 
-    $(document.body).on('click', '#btnAddMain', function () {
+    $(document.body).on("click", "#btnAddMain", function () {
 
         $('#txtName').val('');
         $('#txtCodding').val('');
-        $('#txtRkey').val('');
+        $('#txtMetaData').val('');
+        $('#txtMetadesc').val('');
         $('#exampleInputFilelbl').text('انتخاب تصویر');
         $('#exampleInputFile1lbl').text('انتخاب تصویر');
-        $('#exampleModal').modal();
+        $('#exampleInputFile2lbl').text('انتخاب تصویر');
+        $('#EditDiv').show();
+        $('#ListDiv').hide();
         Flag = 0;
         main = 1;
 
     });
 
-    $(document.body).on('click', '#btnSabt', function () {
+    $(document.body).on("click", "#btnSabt", function () {
 
         let textalert = "";
 
         if ($('#txtName').val().length === 0) {
             textalert += `نام دسته را وارد نمایید`;
         }
-        else if ($('#txtName').val().length === 0) {
+        else if ($('#txtCodding').val().length === 0) {
             textalert += `کدینگ دسته را وارد نمایید`;
         }
-        else if ($('#txtName').val().length === 0) {
-            textalert += `Rkey دسته را وارد نمایید`;
+        else if (parseInt($('#txtCodding').val()) === NaN || $('#txtCodding').val().length != 3 ) {
+            textalert += `برای کد محصول یک عدد 3 رقمی را وارد نمایید`;
         }
 
+       
 
         if (textalert !== "") {
 
@@ -467,7 +503,7 @@ $(document).ready(() => {
 
     });
 
-    $(document.body).on('click', '#btnRemove', function () {
+    $(document.body).on("click", "#btnRemove", function () {
 
 
 
@@ -489,19 +525,22 @@ $(document).ready(() => {
 
     });
 
-    $(document.body).on('click', '#btnEdit', function () {
+    $(document.body).on("click", "#btnEdit", function () {
 
         $('#txtName').val('');
         $('#txtCodding').val('');
-        $('#txtRkey').val('');
+        $('#txtMetaData').val('');
+        $('#txtMetadesc').val('');
         $('#exampleInputFilelbl').text('انتخاب تصویر');
         $('#exampleInputFile1lbl').text('انتخاب تصویر');
+        $('#exampleInputFile2lbl').text('انتخاب تصویر');
+
         Flag = 1;
         GetCatProductById();
 
     });
 
-    $(document.body).on('click', '#btnAddParams', function () {
+    $(document.body).on("click", "#btnAddParams", function () {
 
 
         GetCatProductParametersTreeByCatId();
@@ -509,19 +548,19 @@ $(document).ready(() => {
 
     });
 
-    $(document.body).on('click', '#btncloseparam', function () {
+    $(document.body).on("click", "#btncloseparam", function () {
 
         jQuery("#ParametersDiv").hide();
 
     });
 
-    $(document.body).on('click', '#btnAddparams', function () {
+    $(document.body).on("click", "#btnAddparams", function () {
 
         UpdateCatProductParameters();
 
     });
 
-    $(document.body).on('change', '#exampleInputFile', function () {
+    $(document.body).on("change", "#exampleInputFile", function () {
 
 
         if ($(this).val() == '') {
@@ -537,7 +576,7 @@ $(document).ready(() => {
 
     });
 
-    $(document.body).on('change', '#exampleInputFile1', function () {
+    $(document.body).on("change", "#exampleInputFile1", function () {
 
 
         if ($(this).val() == '') {
@@ -553,5 +592,37 @@ $(document).ready(() => {
 
     });
 
+    $(document.body).on("change", "#exampleInputFile2", function () {
 
+
+        if ($(this).val() == '') {
+            $('#exampleInputFile2lbl').text('انتخاب تصویر');
+        }
+        else {
+            var myfile = $("#exampleInputFile2");
+
+            $('#exampleInputFile2lbl').text(myfile[0].files[0].name);
+
+        }
+
+
+    });
+
+    $("#input-search").on("keyup", search);
+
+    $(document.body).on("click", "#btnBazgasht", function () {
+
+        $('#txtName').val('');
+        $('#txtCodding').val('');
+        $('#txtMetaData').val('');
+        $('#txtMetadesc').val('');
+        $('#exampleInputFilelbl').text('انتخاب تصویر');
+        $('#exampleInputFile1lbl').text('انتخاب تصویر');
+        $('#exampleInputFile2lbl').text('انتخاب تصویر');
+        $('#EditDiv').hide();
+        $('#ListDiv').show();
+        Flag = 0;
+        main = 0;
+
+    });
 });
