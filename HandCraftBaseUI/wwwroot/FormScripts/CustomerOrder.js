@@ -1,16 +1,18 @@
 ﻿
-const GetOrderListNew = () => {
+const GetOrderList = () => {
 
 
     let html = `<table id="example2" class="table table-striped table-bordered table-hover">
                <thead>
                   <tr>
                     <th>ردیف</th>
-                    <th>نام</th>
-                    <th>کدرنگ</th>
-                    <th>Rkey</th>
-                    <th>ویرایش</th>
-                    <th>حذف</th>
+                    <th>تاریخ سفارش</th>
+                    <th>شماره سفارش</th>
+                    <th>نوع سفارش</th>
+                    <th>نام مشتری</th>
+                    <th>مبلغ سفارش</th>
+                    <th>وضعیت سفارش</th>
+                    <th>جزئیات سفارش</th>
                   </tr>
                </thead>
              <tbody>`;
@@ -18,7 +20,7 @@ const GetOrderListNew = () => {
 
     jQuery.ajax({
         type: "Get",
-        url: SetUrl("Color/GetColorList"),
+        url: SetUrl("Order/GetOrderList"),
         data: "",
         async: false,
         contentType: "application/json; charset=utf-8",
@@ -32,17 +34,20 @@ const GetOrderListNew = () => {
 
                 html += `<tr>
                             <td>${i + 1}</td>
-                            <td>${item.name}</td>
-                            <td>${item.colorCode}</td>
-                             <td>${item.rkey}</td>
-                            <td class="tdTextCenter"><span class="Edit" colorId="${item.id}" ><i class="fa fa-edit text text-info"></i></span></td>
-                            <td class="tdTextCenter"><span class="Trash" colorId="${item.id}" ><i class="fa fa-trash text text-danger"></i></span></td>
+                            <td>${item.orderDate}</td>
+                            <td>${item.orderNo}</td>
+                             <td>${item.orderType}</td>
+                             <td>${item.customerName}</td>
+                             <td>${item.status}</td>
+                             <td>${item.finalPrice}</td>
+                            <td class="tdTextCenter"><span class="Edit" OrderId="${item.id}" ><i class="fa fa-search text text-success"></i></span></td>
+
                        </tr>`;
             });
 
             html += `</tbody></table>`;
 
-            $('.TblListNew').html(html);
+            $('.TblList').html(html);
 
         },
         error: (response) => {
@@ -63,7 +68,7 @@ const GetOrderListNew = () => {
 $(document).ready(() => {
 
     ShowLoader();
-    GetOrderListNew();
+    GetOrderList();
     EndLoader();
 
     $(document.body).on('click', '#btnJadid', () => {
