@@ -402,7 +402,6 @@ C:\Users\Sahand\source\repos\HandCraftBaseUI\HandCraftBaseUI\obj\Debug\netcoreap
 C:\Users\Sahand\source\repos\HandCraftBaseUI\HandCraftBaseUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\Color.cshtml.g.cs
 C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\bin\Debug\netcoreapp3.1\appsettings.json
-C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\bin\Debug\netcoreapp3.1\HandCraftBaseUI.exe
 C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\bin\Debug\netcoreapp3.1\HandCraftBaseUI.deps.json
 C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\bin\Debug\netcoreapp3.1\HandCraftBaseUI.runtimeconfig.json
@@ -824,3 +823,4 @@ C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\n
 C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\netcoreapp3.1\HandCraftBaseUI.genruntimeconfig.cache
 C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\netcoreapp3.1\HandCraftBaseUI.csprojAssemblyReference.cache
 C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\netcoreapp3.1\Razor\Areas\Seller\Views\Home\Orders.cshtml.g.cs
+C:\Users\Sahand\source\repos\fahim1384\shop-admin-ui\HandCraftBaseUI\obj\Debug\netcoreapp3.1\scopedcss\bundle\HandCraftBaseUI.styles.css
