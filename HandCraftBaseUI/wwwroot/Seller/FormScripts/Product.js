@@ -35,9 +35,17 @@ const GetProductList = () => {
                             <td>${item.catProductName}</td>
                             <td>${item.name}</td>
                              <td>${item.coding}</td>
-                            <td>${item.status}</td>
-                            <td class="tdTextCenter"><span class="Edit" productId="${item.id}" ><i class="fa fa-tag text text-info"></i></span></td>
+                            <td>${item.status}</td>`;
+                if (item.finalStatus == 8) {
+
+                    html += `<td ></td>
                        </tr>`;
+
+                } else {
+                    html += `<td class="tdTextCenter"><span class="Edit" productId="${item.id}" ><i class="fa fa-tag text text-info"></i></span></td>
+                       </tr>`;
+                }
+
             });
 
             html += `</tbody></table>`;
@@ -167,6 +175,6 @@ $(document).ready(() => {
 
     });
 
-   
+
 
 });

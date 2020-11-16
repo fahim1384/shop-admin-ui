@@ -31,8 +31,8 @@ const GetToken = () => {
 
 const SetUrl = (url) => {
 
-    var host = `https://localhost:44366/api/${url}`;
-   // var host = `https://service.tabrizhandicrafts.com/api/${url}`;
+  //  var host = `https://localhost:44366/api/${url}`;
+    var host = `https://service.tabrizhandicrafts.com/api/${url}`;
     return host;
 }
 
