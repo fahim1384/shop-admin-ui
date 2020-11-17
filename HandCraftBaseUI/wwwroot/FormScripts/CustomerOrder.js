@@ -15,6 +15,7 @@ const GetOrderList = () => {
                     <th>نام مشتری</th>
                     <th>وضعیت سفارش</th>
                     <th>مبلغ سفارش</th>
+                    <th>وضعیت پرداخت</th>
                     <th>تغییر وضعیت سفارش</th>
                     <th>جزئیات سفارش</th>
                   </tr>
@@ -42,7 +43,8 @@ const GetOrderList = () => {
                              <td>${item.orderType}</td>
                              <td>${item.customerName}</td>
                              <td>${item.status}</td>
-                             <td>${item.finalPrice}</td>`;
+                             <td>${item.finalPrice}</td>
+                             <td>${item.paymentStatus}</td>`;
 
                 if (item.editable) {
 
