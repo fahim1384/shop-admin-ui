@@ -38,23 +38,20 @@ const GetProductList = () => {
                             <td>${item.catProductName}</td>
                             <td>${item.name}</td>
                              <td>${item.coding}</td>
-<<<<<<< HEAD
                              <td>${item.price}</td>
                              <td>${item.produceDuration}</td>
                              <td>${item.producePrice}</td>
-
                             <td>${item.status}</td>
                             <td class="tdTextCenter"><span class="Edit" produceDuration="${item.produceDuration}" producePrice="${item.producePrice}" price="${item.price}" productId="${item.id}" ><i class="fa fa-tag text text-info"></i></span></td>
-=======
                             <td>${item.status}</td>`;
                 if (item.finalStatus == 8) {
 
                     html += `<td ></td>
                        </tr>`;
 
-                } else {
+                }
+                else {
                     html += `<td class="tdTextCenter"><span class="Edit" productId="${item.id}" ><i class="fa fa-tag text text-info"></i></span></td>
->>>>>>> 50f2c5bf6af216efe83bbd94428eefc6dbb5ba92
                        </tr>`;
                 }
 
