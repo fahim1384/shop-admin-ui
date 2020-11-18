@@ -69,6 +69,12 @@ namespace HandCraftBaseUI.Controllers
             return View();
         }
 
+        public IActionResult Seller()
+        {
+
+            return View();
+        }
+
 
 
     }

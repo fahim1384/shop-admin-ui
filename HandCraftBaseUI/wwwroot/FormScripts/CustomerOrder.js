@@ -15,6 +15,7 @@ const GetOrderList = () => {
                     <th>نام مشتری</th>
                     <th>وضعیت سفارش</th>
                     <th>مبلغ سفارش</th>
+                    <th>وضعیت پرداخت</th>
                     <th>تغییر وضعیت سفارش</th>
                     <th>جزئیات سفارش</th>
                   </tr>
@@ -42,9 +43,14 @@ const GetOrderList = () => {
                              <td>${item.orderType}</td>
                              <td>${item.customerName}</td>
                              <td>${item.status}</td>
-                             <td>${item.finalPrice}</td>`;
+                             <td>${item.finalPrice}</td>
+                             <td>${item.paymentStatus}</td>`;
 
+<<<<<<< HEAD
                 //if (!item.editable) {
+=======
+                if (item.editable) {
+>>>>>>> 50f2c5bf6af216efe83bbd94428eefc6dbb5ba92
 
                     html += ` <td class="tdTextCenter"><span class="ChangeStatus" OrderId="${item.id}" ><i class="fa fa-refresh text text-info"></i></span></td>`;
                 //} else {
