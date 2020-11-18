@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Sahand\\source\\repos\\fahim1384\\shop-admin-ui\\HandCraftBaseUI\\HandCraftBaseUI.csproj": {}
+    "C:\\Users\\Sa\\source\\repos\\fahim1384\\shop-admin-ui\\HandCraftBaseUI\\HandCraftBaseUI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Sahand\\source\\repos\\fahim1384\\shop-admin-ui\\HandCraftBaseUI\\HandCraftBaseUI.csproj": {
+    "C:\\Users\\Sa\\source\\repos\\fahim1384\\shop-admin-ui\\HandCraftBaseUI\\HandCraftBaseUI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sahand\\source\\repos\\fahim1384\\shop-admin-ui\\HandCraftBaseUI\\HandCraftBaseUI.csproj",
+        "projectUniqueName": "C:\\Users\\Sa\\source\\repos\\fahim1384\\shop-admin-ui\\HandCraftBaseUI\\HandCraftBaseUI.csproj",
         "projectName": "HandCraftBaseUI",
-        "projectPath": "C:\\Users\\Sahand\\source\\repos\\fahim1384\\shop-admin-ui\\HandCraftBaseUI\\HandCraftBaseUI.csproj",
-        "packagesPath": "C:\\Users\\Sahand\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sahand\\source\\repos\\fahim1384\\shop-admin-ui\\HandCraftBaseUI\\obj\\",
+        "projectPath": "C:\\Users\\Sa\\source\\repos\\fahim1384\\shop-admin-ui\\HandCraftBaseUI\\HandCraftBaseUI.csproj",
+        "packagesPath": "C:\\Users\\Sa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sa\\source\\repos\\fahim1384\\shop-admin-ui\\HandCraftBaseUI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Sahand\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Sa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -88,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

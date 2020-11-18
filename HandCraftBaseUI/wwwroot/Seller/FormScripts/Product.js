@@ -10,6 +10,9 @@ const GetProductList = () => {
                     <th>دسته بندی محصول</th>
                     <th>نام</th>
                     <th>کد محصول</th>
+                    <th>قیمت محصول</th>
+                    <th>مدت زمان آماده سازی</th>
+                    <th>قیمت سفارش</th>
                     <th>وضعیت محصول</th>
                     <th>ثبت قیمت</th>
                   </tr>
@@ -35,8 +38,12 @@ const GetProductList = () => {
                             <td>${item.catProductName}</td>
                             <td>${item.name}</td>
                              <td>${item.coding}</td>
+                             <td>${item.price}</td>
+                             <td>${item.produceDuration}</td>
+                             <td>${item.producePrice}</td>
+
                             <td>${item.status}</td>
-                            <td class="tdTextCenter"><span class="Edit" productId="${item.id}" ><i class="fa fa-tag text text-info"></i></span></td>
+                            <td class="tdTextCenter"><span class="Edit" produceDuration="${item.produceDuration}" producePrice="${item.producePrice}" price="${item.price}" productId="${item.id}" ><i class="fa fa-tag text text-info"></i></span></td>
                        </tr>`;
             });
 
@@ -124,10 +131,11 @@ $(document).ready(() => {
 
     $(document.body).on("click", ".Edit", function () {
 
-        Id = parseInt($(this).attr("productId"));
-        $('#txtPrice').val('');
-        $('#txtProducePrice').val('');
-        $('#txtProduceDuration').val('');
+        var pp = $(this);
+        Id = parseInt(pp.attr("productId"));
+        $('#txtPrice').val(pp.attr("price"));
+        $('#txtProducePrice').val(pp.attr("producePrice"));
+        $('#txtProduceDuration').val(pp.attr("produceDuration"));
         $('#InsertModal').modal();
 
     });

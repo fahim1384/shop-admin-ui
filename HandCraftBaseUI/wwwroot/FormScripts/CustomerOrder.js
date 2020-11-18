@@ -44,13 +44,13 @@ const GetOrderList = () => {
                              <td>${item.status}</td>
                              <td>${item.finalPrice}</td>`;
 
-                if (!item.editable) {
+                //if (!item.editable) {
 
                     html += ` <td class="tdTextCenter"><span class="ChangeStatus" OrderId="${item.id}" ><i class="fa fa-refresh text text-info"></i></span></td>`;
-                } else {
+                //} else {
 
-                    html += `<td></td>`;
-                }
+                //    html += `<td></td>`;
+                //}
 
                 html += ` <td class="tdTextCenter"><span class="Details" OrderId="${item.id}" ><i class="fa fa-search text text-success"></i></span></td>
 

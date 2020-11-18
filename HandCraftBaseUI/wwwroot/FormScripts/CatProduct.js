@@ -370,6 +370,7 @@ const GetCatProductParametersByCatId = () => {
 
             });
             jQuery("#ParametersDiv").show();
+            jQuery("#ListDiv").hide();
 
         },
         error: function (response) {
@@ -551,6 +552,7 @@ $(document).ready(() => {
     $(document.body).on("click", "#btncloseparam", function () {
 
         jQuery("#ParametersDiv").hide();
+        jQuery("#ListDiv").show();
 
     });
 
