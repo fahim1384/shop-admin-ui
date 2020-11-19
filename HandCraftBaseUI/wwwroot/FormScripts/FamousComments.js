@@ -166,6 +166,40 @@ const DeleteFamousComments = () => {
     });
 }
 
+const GetFamousCommentsById = () => {
+
+    ShowLoader();
+
+    jQuery.ajax({
+        type: "Get",
+        url: SetUrl(`FamousComments/GetFamousCommentsById?famousCommentId=${Id}`),
+        data: "",
+        async: false,
+        headers: { "Authorization": `Bearer ${GetToken()}` },
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: (response) => {
+
+            $('#txtName').val(response.name);
+            $('#txtPost').val(response.post);
+          //  $("#txtComment").data("wysihtml5").editor.setValue(response.comment);
+            
+         //   $('#txtComment').val(response.comment);
+            $('#txtDesc').val(response.description);
+
+        },
+        error: (response) => {
+
+            console.log(response);
+
+        },
+        complete: () => {
+            EndLoader();
+
+        }
+    });
+}
+
 
 
 $(document).ready(() => {
@@ -174,6 +208,20 @@ $(document).ready(() => {
     GetFamousCommentsList();
     EndLoader();
 
+    $(".editor").wysihtml5({
+        toolbar: {
+            "font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
+            "emphasis": true, //Italics, bold, etc. Default true
+            "lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+            "html": false, //Button which allows you to edit the generated HTML. Default false
+            "link": true, //Button to insert a link. Default true
+            "image": true, //Button to insert an image. Default true,
+            "color": false, //Button to change color of font  
+            "blockquote": true, //Blockquote  
+            "size": "sm", //default: none, other options are xs, sm, lg
+            "fa": true
+        }
+    });
 
     $(document.body).on('click', '#btnJadid', () => {
 
@@ -184,7 +232,24 @@ $(document).ready(() => {
         $('#txtDesc').val('');
         $('.ProfileImageUplodaer').text('انتخاب تصویر');
         $('.CommenImageUploader').text('انتخاب تصویر');
-        $('#InsertModal').modal();
+
+
+
+        $('#EditDiv').show();
+        $('#PnlList').hide();
+    });
+
+    $(document.body).on('click', '#btnBazgasht', () => {
+
+        Id = 0;
+        $('#txtName').val('');
+        $('#txtPost').val('');
+        $('#txtComment').val('');
+        $('#txtDesc').val('');
+        $('.ProfileImageUplodaer').text('انتخاب تصویر');
+        $('.CommenImageUploader').text('انتخاب تصویر');
+        $('#EditDiv').hide();
+        $('#PnlList').show();
     });
 
     $(document.body).on('click', '#btnSabt', () => {
@@ -249,6 +314,17 @@ $(document).ready(() => {
 
 
     });
+
+    //$(document.body).on('click', '.Edit', function () {
+
+    //    Id = parseInt($(this).attr('commentId'));
+    //    GetFamousCommentsById();
+     
+    //    $('#EditDiv').show();
+    //    $('#PnlList').hide();
+
+
+    //});
 
     $(document.body).on('change', '#ProfileImageUplodaer', function () {
 
