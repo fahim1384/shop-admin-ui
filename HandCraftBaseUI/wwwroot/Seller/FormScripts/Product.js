@@ -11,6 +11,7 @@ const GetProductList = () => {
                     <th>نام</th>
                     <th>کد محصول</th>
                     <th>قیمت محصول</th>
+                    <th>تعداد محصول</th>
                     <th>مدت زمان آماده سازی</th>
                     <th>قیمت سفارش</th>
                     <th>وضعیت محصول</th>
@@ -39,21 +40,13 @@ const GetProductList = () => {
                             <td>${item.name}</td>
                              <td>${item.coding}</td>
                              <td>${item.price}</td>
+                             <td>${item.count}</td>
                              <td>${item.produceDuration}</td>
                              <td>${item.producePrice}</td>
                             <td>${item.status}</td>
-                            <td class="tdTextCenter"><span class="Edit" produceDuration="${item.produceDuration}" producePrice="${item.producePrice}" price="${item.price}" productId="${item.id}" ><i class="fa fa-tag text text-info"></i></span></td>
-                            <td>${item.status}</td>`;
-                if (item.finalStatus == 8) {
-
-                    html += `<td ></td>
-                       </tr>`;
-
-                }
-                else {
-                    html += `<td class="tdTextCenter"><span class="Edit" productId="${item.id}" ><i class="fa fa-tag text text-info"></i></span></td>
-                       </tr>`;
-                }
+                            <td class="tdTextCenter"><span class="Edit" count=${item.count} produceDuration="${item.produceDuration}" producePrice="${item.producePrice}" price="${item.price}" productId="${item.id}" ><i class="fa fa-tag text text-info"></i></span></td>
+                            </tr>`;
+           
 
             });
 
@@ -77,17 +70,34 @@ const GetProductList = () => {
 
 const UpdateProductBySeller = () => {
 
+    let sellerProductUpdateModel = null;
+    if ($("#PreOrder").prop('checked') == true) {
 
-    const sellerProductUpdateModel = {
+        sellerProductUpdateModel = {
 
-        ProductId: Id,
-        Price: parseInt($("#txtPrice").val()),
-        ProducePrice: parseInt($("#txtProducePrice").val()),
-        ProduceDuration: parseInt($("#txtProduceDuration").val())
+            ProductId: Id,
+            Count: parseInt($("#txtCount").val()),
+            Price: parseInt($("#txtPrice").val()),
+            ProducePrice: parseInt($("#txtProducePrice").val()),
+            ProduceDuration: parseInt($("#txtProduceDuration").val())
 
 
-    };
+        };
+    }
+    else {
 
+        sellerProductUpdateModel = {
+
+            ProductId: Id,
+            Count: parseInt($("#txtCount").val()),
+            Price: parseInt($("#txtPrice").val()),
+            ProducePrice: null,
+            ProduceDuration: null
+
+
+        };
+    }
+ 
 
     ShowLoader();
 
@@ -144,6 +154,7 @@ $(document).ready(() => {
         var pp = $(this);
         Id = parseInt(pp.attr("productId"));
         $('#txtPrice').val(pp.attr("price"));
+        $('#txtCount').val(pp.attr("count"));
         $('#txtProducePrice').val(pp.attr("producePrice"));
         $('#txtProduceDuration').val(pp.attr("produceDuration"));
         $('#InsertModal').modal();
@@ -185,6 +196,15 @@ $(document).ready(() => {
 
     });
 
+    $("#PreOrder").on("ifChecked", function (event) {
+        $(".order").show();
 
+    });
+
+    $("#PreOrder").on("ifUnchecked", function (event) {
+        $(".order").hide();
+    });
+
+  
 
 });
